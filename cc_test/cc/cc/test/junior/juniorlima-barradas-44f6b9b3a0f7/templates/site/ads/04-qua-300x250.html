@@ -1,0 +1,12 @@
+{% if ads_ret_01 %}
+    {% for ads in ads_ret_01 %}
+        <div class="widget adwidget">
+            {% if ads.link %}<a href="#">{% if ads.tipo == '1' %}<img src="{{ MEDIA_URL }}{{ ads.arquivo }}" alt="{{ ads.nome }} 1"/>{% else %}<object width="300" height="250" data="{{ MEDIA_URL }}{{ ads.arquivo }}"></object> {% endif %}</a>{% else %}
+            {% if ads.tipo == '1' %}<img src="{{ MEDIA_URL }}{{ ads.arquivo }}" alt="{{ ads.nome }}"/>{% else %}<object width="300" height="250" data="{{ MEDIA_URL }}{{ ads.arquivo }}"></object>{% endif %}{% endif %}
+        </div>
+    {% endfor %}
+    {% else %}
+    <div class="widget adwidget">
+        <a href="#"><img src="http://placehold.it/300x250" alt=""/></a>
+    </div>
+{% endif %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    {{ block.super }}
+{% endblock titulo %}
+
+{% block posts %}
+
+{% if posts_categoria %}
+    
+    {% for post in posts_categoria %}
+
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ post.titulo }}</h2>
+            <p class="blog-post-meta">{{ post.data_post }} | Postado por: {{ post.usuario.get_full_name }}</p>
+
+            <p>{{ post.descricao_curta }}</p>
+            <hr>
+            {% if post.imagem %}
+                <img src="{{ post.imagem.url }}">
+            {% endif %}
+            <p>
+                {{ post.materia|truncatechars:300 }}
+            </p>
+            <span><a href="{% url 'posts:detalhes' post.id %}">Leia mais</a></span>
+        </div><!-- /.blog-post -->
+
+    {% endfor %}
+
+{% else %}
+
+    <p>Nenhum post encontrado nesta categoria!</p>
+
+{% endif %}
+
+<nav>
+    <ul class="pager">
+        {% if posts_categoria.has_previous %}
+            <li><a href="?page={{ posts_categoria.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+
+        <span class="current">
+            Página {{ posts_categoria.number }} de {{ posts_categoria.paginator.num_pages }}
+        </span>
+
+        {% if posts_categoria.has_next %}
+            <li><a href="?page={{ posts_categoria.next_page_number }}">Próximo</a></li>
+        {% endif %}
+  </ul>
+</nav>
+
+{% endblock posts %}

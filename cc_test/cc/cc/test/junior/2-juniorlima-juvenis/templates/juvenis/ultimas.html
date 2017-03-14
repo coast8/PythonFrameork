@@ -1,0 +1,37 @@
+{% load pagination_tags %}
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInternaUltimas">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1Video">Ultimas</h1>
+                <div id="borda8_2">
+                </div>
+                <span class="rodape_interna2"></span>
+                    {% autopaginate noticias 10 %}
+                    {% for noticia in noticias %}
+                        <div id="listaBlogs">
+                            <a href="{{  noticia.get_absolute_url }}">
+                                {% if noticia.imagem %}
+                                <div id="imagemBlog">
+                                    <img src="{{ noticia.imagem.url_200x150 }}" width="186" height="124">
+                                </div>
+                                {% endif %}
+                                <p class="chapeu">{{ noticia.chamada }}</p>
+                                <p class="titulobloco1_lista">{{ noticia.titulo }}</p>
+                                <p class="descricao_noticia">{{ noticia.subtitulo|truncatewords:19 }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+            <div id="paginac">
+                <div id="botoes">
+                    {% paginate %}
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+        <div id="shadowInterna"></div>
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

@@ -1,0 +1,84 @@
+{% load thumbnail %}
+{% include "header/header-galeria.html" %}
+    <div id="corpo">
+        <div id="ContainerSecao2">
+            <div id="secao2">
+                <div id="conteudos2">
+                    <div id="breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">juvenis.com.br</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{% url 'noticias.views.galerias' %}" itemprop="url" title="Fotos e coberturas do site Juvenis"><span itemprop="title">fotos</span></a> ›</span>
+                    <span>{{ noticia.titulo }}</span>
+                    </div>
+
+                    <h1 class="tituloInternaVideo">{{ noticia.titulo }}</h1>
+                    <p class="subtitulo">{{ noticia.subtitulo }}</p>
+                    <div id="borda">
+                        <span class="rodape"></span>
+                    </div>
+                    <div id="midiasInterna">
+                        <div id="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false"></div></div>
+                        <div id="f1"><g:plusone></g:plusone></div>
+                        <div id="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-via="JuvenisThe" data-lang="pt" data-related="JuvenisThe">Tweetar</a></div>
+                    </div>
+
+                    <div id="gal">
+                        <ul id="galeria">
+                            {% for imagem in fotos %}
+                                {% thumbnail imagem.img "170x127" crop="center" as miniatura %}
+                                    {% thumbnail imagem.img "918" crop="center" as media %}
+                                        <li class="foto-unica">
+                                            <a class="fancybox-thumb" rel="fancybox-thumb" href="{{ media.url }}"  title="{{ noticia.titulo }} - <a href='{{ imagem.get_absolute_url }}' target='_blank'><b>Baixar foto</b><img src='{{ STATIC_URL }}site/img/download-photo.png' alt='Baixar foto'></a>" ><img src="{{ miniatura.url }}" width="{{ miniatura.width }}" height="{{ miniatura.height }}" alt="{{ noticia.titulo }}" /></a>
+                                        </li>
+                                {% endthumbnail %}
+                            {% endthumbnail %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="limite_texto">
+                        <div id="subtituloVideo">{{ noticia.conteudo|safe }}</div>
+
+                    </div>
+                     <div id="publicidade-adsense-banner-728x90">
+                            {% include "adsense/728x90-misto.html" %}
+                    </div>
+                <div id="comentario">
+                    <h1 class="tituloSecao1Video2">Comente</h1>
+                    <div id="borda8_2">
+                        <span class="rodape_interna"></span>
+                    </div>
+                    <div id="comFacebook">
+                        <div class="fb-comments" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-num-posts="5" data-width="920"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="ContainerSecao2">
+            <div id="secao2">
+                <div id="conteudos2">
+                    <h1 class="tituloSecao1">Outras coberturas
+                    </h1>
+                    <div id="borda">
+                        <span class="rodape"></span>
+                    </div>
+                    {% for noticia in ultimas %}
+                            <div id="bloco">
+                            {% if noticia.imagem %}
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <div id="img">
+                                        <img src="{{ noticia.imagem.url_300x225 }}" alt="{{ noticia.titulo }}" width="220" >
+                                    </div>
+                                </a>
+                                {% endif %}
+                                <p class="chapeu">{{ noticia.chamada }}</p>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <h2 class="titulobloco1">{{ noticia.titulo }}...</h2>
+                                </a>
+                            </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        </div>
+    {% include "footer/footer.html" %}

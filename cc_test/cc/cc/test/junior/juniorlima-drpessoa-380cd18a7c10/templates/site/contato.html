@@ -1,0 +1,42 @@
+{% extends 'site/base.html' %}
+{% load staticfiles %}
+{% block title %}<title>Contato - Institucional 10</title>{% endblock %}
+{% block description %} <meta name="description" content="TV Antena 10 - Afiliada a Rede Record">{% endblock %}
+{% block container %}
+    <div class="container banner">
+	<img src="{% static 'site/images/banner.jpg' %}" class="img-responsive">
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9 col-md-8 col-sm-6 col-xs-6 contato">
+
+			<div class="page-header">
+				<h3>Contato</h3>
+			</div>
+
+			<form>
+				<div class="form-group">
+					<label>Nome</label>
+					<input type="email" class="form-control" id="" placeholder="Digite seu nome...">
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="password" class="form-control" id="" placeholder="Digite seu email...">
+				</div>
+				<div class="form-group">
+					<label>Mensagem</label>
+					<textarea class="form-control" placeholder="Digite sua mensagem" rows="5"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+			</form>
+
+
+
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+			{% include 'site/sidebar.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}

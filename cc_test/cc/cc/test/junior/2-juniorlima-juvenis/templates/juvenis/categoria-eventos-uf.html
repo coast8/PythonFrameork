@@ -1,0 +1,37 @@
+{% load pagination_tags %}
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInterna{{ slugcategoria }}">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1{{ categoria.slugcategoria }}">Eventos em {{ estado.nome }}</h1>
+                <div id="borda8_2{{ categoria.slugcategoria }}">
+                </div>
+
+                <span class="rodape_interna2"></span>
+                {% autopaginate noticias 10 %}
+                {% for noticia in noticias %}
+                    <div id="listaBlogs">
+                        <a href="{{  noticia.evento_noticia.get_absolute_url }}">
+                            {% if noticia.evento_noticia.imagem %}
+                            <div id="imagemBlog">
+                                <img src="{{ noticia.evento_noticia.imagem.url_200x150 }}" width="186" height="124" alt="{{ noticia.titulo }}">
+                            </div>
+                            {% endif %}
+                            <p class="chapeu">{{ noticia.chamada }}</p>
+                            <p class="titulobloco1{{ categoria.slugcategoria }}">{{ noticia.evento_noticia.titulo }}</p>
+                            <p class="subhome">{{ noticia.evento_noticia.subtitulo }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            <div id="paginac">
+                <div id="botoes">
+                    {% paginate %}
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

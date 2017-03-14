@@ -1,0 +1,21 @@
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+	<div class="sidebar-module sidebar-module-inset">
+		<h4>Sobre</h4>
+		<p>Aqui uma pequena biografia sobre o criador do Blog, isso é importante, pois assim podemos saber se devemos ou não confiar nas notícias postadas!</p>
+	</div>
+	<div class="sidebar-module">
+		<h4>Categorias</h4>
+		<ol class="list-unstyled">
+			{% for c in categorias %}
+			<li><a href="{% url 'posts:posts_por_categoria' c.id %}">{{ c.nome }}</a></li>
+			{% endfor %}
+		</ol>
+	</div>
+	<div class="sidebar-module">
+		<h4>Siga-nos</h4>
+		<ol class="list-unstyled">
+			<li><a href="https://twitter.com/portalgp1" target="_blank">Twitter</a></li>
+			<li><a href="https://www.facebook.com/PortalGP1" target="_blank">Facebook</a></li>
+		</ol>
+	</div>
+</div><!-- /.blog-sidebar -->

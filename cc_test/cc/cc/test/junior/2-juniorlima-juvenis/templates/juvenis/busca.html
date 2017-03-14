@@ -1,0 +1,52 @@
+{% load pagination_tags %}
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInterna{{ slugcategoria }}">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1{{ categoria.slugcategoria }}">Busca Juvenis</h1>
+                <div id="borda8_2{{ categoria.slugcategoria }}">
+                </div>
+
+                <span class="rodape_interna2"></span>
+
+                <p class="subhome">Voce estar buscando por:
+                    {% if bus %}
+                        <strong class="tituloParceiroBusca">{{ bus }}</strong>
+                    {% endif %}
+                </p>
+                <p class="subtitulo">
+                    {% if quante == 1 %}{{ quant }} resultado encontrado
+                </p>
+                    {% else %}
+                <p class="subtitulo">
+                    Achamos {{ down.count }} downloads e {{ noti.count }} notícias sobre {{ bus }}
+                </p>
+                    {% endif %}
+
+                {% autopaginate itens_busca 10 %}
+                {% for noticias in itens_busca %}
+                    <div id="listaBlogs">
+                        <a href="{{  noticias.get_absolute_url }}">
+                            {% if noticias.imagem.url_200x150 %}
+                            <div id="imagemBlog"><img src="{{ noticias.imagem.url_200x150 }}" width="186" height="124" alt="{{ noticias.titulo }}"></div>
+                            {% else %}
+                            <div id="imagemBlog"><img src="{{ noticias.imagem.url_300x225 }}" width="186" height="124" alt="{{ noticias.titulo }}"></div>
+                            {% endif %}
+                            <p class="chapeu">{{ noticias.chamada }}</p>
+                            <p class="titulobloco1{{ categoria.slugcategoria }}">{{ noticias.titulo }}</p>
+                            <p class="subhome">{{ noticias.subtitulo }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            <div id="paginac">
+                <div id="botoes">
+                    {% paginate %}
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

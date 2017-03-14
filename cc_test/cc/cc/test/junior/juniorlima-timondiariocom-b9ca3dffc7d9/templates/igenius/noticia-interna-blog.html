@@ -1,0 +1,288 @@
+{% include "header/h-interna.html" %}
+<body class="pinterna">
+    {% include "header/header-interna.html" %}
+    <div class="row">
+
+    <div class="blog-header-{{ blog.cor }}">
+        <div class="principal">
+            <div class="blog-descricao">
+            <div class="wapper-descricao">
+                <span class="nome-blog-topo">BLOG</span>
+                <a href="/blog/{{ slugblog }}">
+                    <div class="nome-blog-home">
+                         {{ blog.nome }}
+                    </div>
+                </a>
+                <div class="autor-blog">
+                    por {{ dblog.colaborador.nome }}
+                </div>
+                <div class="wapper-descricao-blog">
+                    <span class="watts-blog">
+                        <span class="i-watts">
+                            <img src="{{ STATIC_URL }}site/img/i-watts.fw.png">
+                        </span>
+                        {{ blog.colaborador.telefone }}
+                    </span>
+                    <a href="mailto:{{ blog.colaborador.email }}">
+                        <span class="email-blog">
+                            {{ blog.colaborador.email }}
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="img-blog-home">
+                <img src="{{ blog.imagem_capa.url_800x600 }}">
+            </div>
+
+        </div>
+            <span class="chamada-interna-blog">
+                <a href="/blog/{{ blog.slugblog }}">Iníco Blog {{ blog.nome }}</a>
+            </span>
+        </div>
+
+    </div>
+</div>
+
+    <div class="row">
+
+        <div class="principal">
+            <div class="coluna-interna-{{ blog.cor }}">
+                <div class="header-interna">
+                    <h1>{{ noticia.titulo }}</h1>
+                    <p>{{ noticia.subtitulo }}</p>
+                    <div class="barra-detalhes-interna">
+                        <a href="{{ noticia.link }}">
+                            <span class="autor-nome">Fonte: {{ noticia.fonte.nome }}</span>
+                        </a>
+                        <span class="autor-nome">Publicado Por: {{ noticia.autor.nome }}</span>
+
+                        <div class="social-widgets">
+                            <div style="margin-top: 8px; margin-left: 14px;width: auto; float: right;">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-via="timondiario">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            </div>
+                                <!-- Posicione esta tag onde você deseja que o botão +1 apareça. -->
+                            <div style="margin-top: 7px; margin-left: 14px;width: 70px; float: right;">
+
+                                <div class="g-plusone"></div>
+                            </div>
+                            <div style="margin-top: 9px; width: auto; float: right;">
+                            <div class="fb-like" data-href="http://timondiario.com{{ noticia.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                            </div>
+                            </div>
+
+                    </div>
+                </div>
+
+                <div class="conteudo-interna">
+                    <div class="publicidade-interna">
+                         {% include "adsense/publicidade-bloco-desktop.html" %}
+                    </div>
+                    {% if noticia.imagem != null %}
+                        <div class="imagem-principal-interna">
+                            <img src="{{ noticia.imagem.url_800x600 }}">
+                        </div>
+                    {% endif %}
+
+                    <span class="texto-principal">
+                    {{ noticia.conteudo|safe }}
+                    </span>
+
+                    <div class="publicidade-wapper">
+                          {% include "adsense/publicidade-footer-noticia.html" %}
+                    </div>
+
+                    <div class="painel-comentarios">
+                        <div class="topo-comentario">
+                            <span class="comentario-{{ blog.cor }}">COMENTÁRIOS</span>
+                        </div>
+
+                        <div class="wapper-comentario">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript">
+                                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                                    var disqus_shortname = 'timondiario'; // required: replace example with your forum shortname
+
+                                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                                    (function() {
+                                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-comentarios">
+                        <div class="topo-comentario">
+                            <span class="relacionadas-{{ blog.cor }}">NOTÍCIAS DO BLOG</span>
+                        </div>
+
+                        <div class="wapper-categoria">
+                            <div class="rel-itens">
+                                {% for relacionada in relacionada|slice:"0:4" %}
+                                    {% if relacionada.slug != slug %}
+                                        <div class="r-item-{{ blog.cor }}">
+                                            <div class="limite-img">
+                                                <a href="{{ relacionada.get_absolute_url }}">
+                                                    <img src="{{ relacionada.imagem.url_200x150 }}">
+                                                </a>
+                                            </div>
+                                            <a href="{{ relacionada.get_absolute_url }}">
+                                                <h1>{{ relacionada.titulo }}</h1>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-left">
+
+                            </div>
+
+                            <div class="coluna-right">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="coluna-right">
+                {% if slugblog != '' %}
+                    <div class="buscar-categoria-blog" style="margin-bottom: 19.9px">
+                        <form method="get" action="{% if slugblog != '' %}/busca-blog{% else %}/busca{% endif %}">
+                            <span class="i-buscar"></span>
+                            <input placeholder="Buscar no blog" type="text" name="{% if slugblog != '' %}buscab{% else %}buscap{% endif %}">
+                            {% if slugblog != "" %}
+                                <input type="hidden" name="blog" value="{{ blog.slugblog }}">
+                            {% endif %}
+                        </form>
+                    </div>
+                {% endif %}
+                <div class="sidebar">
+                    <div class="publicidade-home">
+                        {% include "adsense/publicidade-bloco-desktop.html" %}
+                    </div>
+                </div>
+                <div class="mais-lidas-sidebar">
+                        <div class="plantao-wapper">
+                            <span class="t-lidas-sidebar">MAIS LIDAS</span>
+                            {% for plantao in lidas %}
+                                <div class="item-mais-sidebar">
+                                    <span class="num-mais-lidas-sidebar">
+                                        {{ forloop.counter }}
+                                    </span>
+                                    <a href="{{ plantao.get_absolute_url }}">
+                                        <h1 class="titulo-mais-sidebar">
+                                            {{ plantao.titulo|truncatewords:9 }}
+                                        </h1>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                <div class="">
+                    <div class="publicidade-home">
+                        {% include "adsense/publicidade-bloco-desktop.html" %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="principal">
+            <div class="wapper-categoria">
+                            <div class="topo-comentario-interna">
+                                <span class="relacionadas-noticias">NOTÍCIAS</span>
+                                <a href="/noticias">
+                                    <span class="btn-mais-noticias">VER MAIS</span>
+                                </a>
+                                <!--
+                                <div class="tags">
+                                    <span class="ass">ASSUNTOS:</span>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#SocorroWaquin</span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#AlexandreAlmeida</span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#ChicoLeitoa</span>
+                                    </a>
+                                </div>
+                                -->
+                            </div>
+                            <div class="coluna-left-interna">
+                                <div class="sub-noticia-full-interna">
+                                    {% for noti in noticias|slice:"0:1" %}
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <div class="limite-img-full">
+                                                        <img src="{{ noti.imagemDestaque.url_383x155 }}">
+                                                    </div>
+                                                </a>
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <h1 class="bloco-sub-noticia-noticias-titulo">{{ noti.titulo }}</h1>
+                                                </a>
+                                                <p>{{ noti.subtitulo }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {% for noticia in noticias|slice:"1:2" %}
+                                    <div class="sub-noticia-full-sub">
+
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <span class="chamada-politica">{{ noticia.subcategoria.categoria.nome }}</span>
+                                                <a href="{{ noticia.get_absolute_url }}">
+                                                    <h1>{{ noticia.titulo }}</h1>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-center-interna">
+                                {% for noti in noticias|slice:"2:5" %}
+                                    <div class="sub-noticia-full-sub-interna">
+
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <div class="limite-img-full-sub">
+                                                        <img src="{{ noti.imagemDestaque.url_383x155 }}">
+                                                    </div>
+                                                </a>
+                                                <span class="chamada-{{ noti.subcategoria.categoria.slugcategoria }}">{{ noti.subcategoria.categoria.nome }}</span>
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <h1>{{ noti.titulo }}</h1>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-right">
+                                <div class="publicidade-right-interna">
+                                    {% include "adsense/publicidade-bloco-desktop.html" %}
+                                </div>
+                            </div>
+                        </div>
+        </div>
+    </div>
+{% include "footer/footer.html" %}

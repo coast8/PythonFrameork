@@ -1,0 +1,44 @@
+{% load pagination_tags %}
+{% load thumbnail %}
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInternaFotos">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1Fotos">Fotos</h1>
+                <div id="borda8_2Foto">
+                </div>
+                <span class="rodape_interna2"></span>
+                {% autopaginate galeriasfilter 10 %}
+                {% for galeria in galeriasfilter %}
+                    <div id="listaFotos">
+
+                            <div id="imagemFoto">
+
+                                {% for foto in galeria.foto_galeria_set.all|slice:"0:5" %}
+                                    {% thumbnail foto.img "170x127" crop="center" as im %}
+                                    <a href="{{ galeria.get_absolute_url }}">
+                                        <img src="{{ im.url }}" alt="{{ galeria.titulo }}" width="82" height="60">
+                                    </a>
+                                    {% endthumbnail %}
+                                {% endfor %}
+                                <a href="{{ galeria.get_absolute_url }}">
+                                    <p class="titulobloco1Fotos">{{ galeria.titulo }}</p>
+                                </a>
+                                <p class="subhome_listagem">{{ galeria.subtitulo|truncatewords:19 }}</p>
+                            </div>
+                            <p class="chapeu">{{ noticias.chamada }}</p>
+
+                    </div>
+                {% endfor %}
+                <div id="paginac">
+                <div id="botoes">
+                    {% paginate %}
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

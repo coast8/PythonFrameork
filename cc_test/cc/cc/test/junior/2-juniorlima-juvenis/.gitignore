@@ -1,0 +1,10 @@
+*.pyc
+*Thumbs.db
+.idea/*
+media/*
+Juvenis/local_settings.py
+Juvenis/juvenis.log
+Juvenis/juvenis.sock
+Juvenis/juvenis.pid
+Juvenis/django/*
+django/*

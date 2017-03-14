@@ -1,0 +1,72 @@
+{% extends 'site/base.html' %}
+{% load staticfiles %}{% load thumbnail %}{% load app_tags %}
+{% block title %}<title>Notícias - Institucional 10</title>{% endblock %}
+{% block description %} <meta name="description" content="TV Antena 10 - Afiliada a Rede Record">{% endblock %}
+{% block container %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9 col-md-8 col-sm-6 col-xs-6 lista-noticia">
+			<div class="visible-xs">
+				<div class="page-header">
+					<h3>Buscar</h3>
+				</div>
+				<div class="input-group">
+			      <input type="text" class="form-control" placeholder="Pesquisar por...">
+			      <span class="input-group-btn">
+			        <button class="btn btn-primary glyphicon glyphicon-search" type="submit"></button>
+			      </span>
+			    </div><!-- /input-group -->
+			</div>
+			<div class="page-header">
+				<h3>Notícias</h3>
+			</div>
+            {% for noticia in noticias_list %}
+			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+				<div class="item-noticia">
+					<a href="{{ noticia.get_absolute_url }}">
+					<div class="foto">
+						<img src="{{ noticia.imagem|thumbnail_url:'home_noticia_300' }}" class="img-responsive">
+						<span>{{ noticia.data_publicacao|date:'d/m/Y' }}</span>
+					</div>
+					<div class="desc">
+						<h4>{{ noticia.titulo|truncatesmart:70 }}</h4>
+						<p>{{ noticia.subtitulo|truncatesmart:70 }}</p>
+					</div>
+					</a>
+				</div>
+			</div>
+            {% endfor %}
+
+
+			<div class="col-lg-12">
+				<nav>
+				  <ul class="pagination">
+				    <li>
+				      <a href="#" aria-label="Previous">
+				        <span aria-hidden="true">Anterior</span>
+				      </a>
+				    </li>
+				    <li class="active"><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li>
+				      <a href="#" aria-label="Next">
+				        <span aria-hidden="true">Próximo</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+			</div>
+
+		</div>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+			{% include 'site/sidebar.html' %}
+
+
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<div class="mag-content clearfix">
+    {% if ads_cab_03 %}{% for ads in ads_cab_03 %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ad728-wrapper">
+                    {% if ads.link %}<a href="{{ ads.link }}">{% if ads.tipo == 1 %}<img src="{{ MEDIA_URL }}{{ ads.arquivo }}" alt="{{ ads.nome }}"/>{% else %}<object width="728" height="90" data="{{ MEDIA_URL }}{{ ads.arquivo }}"></object>{% endif %}</a>{% else %}<img src="{{ MEDIA_URL }}{{ ads.arquivo }}" alt="{{ ads.nome }}"/>{% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ad728-wrapper">
+                    {% if ads.link %}<a href="#"><img src="http://placehold.it/728x90" alt=""/></a>{% else %}
+                    <img src="http://placehold.it/728x90" alt=""/>{% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

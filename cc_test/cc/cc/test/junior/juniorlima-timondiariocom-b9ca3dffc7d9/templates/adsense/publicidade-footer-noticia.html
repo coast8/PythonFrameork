@@ -1,0 +1,11 @@
+{% for publi in publicidade %}
+    {% if publi.tipo == '8' %}
+        {% if publi.arquivo == "" %}
+            {{ publi.adsense|safe }}
+        {% else %}
+            <a href="{{ publi.url }}">
+                <img src="{{ MEDIA_URL }}{{ publi.arquivo }}" width="300">
+            </a>
+        {% endif %}
+    {% endif %}
+{% endfor %}

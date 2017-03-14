@@ -1,0 +1,36 @@
+{% load tagging_tags %}
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInternaartigos">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1artigos">Tudo sobre {{ tag.name }}</h1>
+                <div id="borda8_2artigos">
+                </div>
+
+                <span class="rodape_interna2"></span>
+
+                {% tagged_objects tag in noticias.Noticias as taggedentries %}
+                {% for noticia in taggedentries  %}
+                    <div id="listaBlogs">
+                        <a href="{{  noticia.get_absolute_url }}">
+                            {% if noticia.imagem %}
+                            <div id="imagemBlog">
+                                <img src="{{ noticia.imagem.url_200x150 }}" width="186" height="124" alt="{{ noticia.titulo }}">
+                            </div>
+                            {% endif %}
+                            <p class="chapeu">{{ noticia.chamada }}</p>
+                            <p class="titulobloco1artigos">{{ noticia.titulo }}</p>
+                            <p class="subhome">{{ noticia.subtitulo }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            <div id="paginac">
+                {% include 'extras/paginacao.html' %}
+            </div>
+            </div>
+
+            </div>
+
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

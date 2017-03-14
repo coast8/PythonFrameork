@@ -1,0 +1,126 @@
+{% include "header/header-evento.html" %}
+<div id="containermeio">
+    <div id="corpo3">
+        <div id="containerInterna">
+            <div id="conteudoInterna">
+                <div id="breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">juvenis.com.br</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/eventos" itemprop="url" title="Eventos e shows evangélicos"><span itemprop="title">eventos</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ noticia.cidade.evento_estado }}" itemprop="url" title="Veja mais eventos em {{ noticia.cidade.uf.nome }}"><span itemprop="title">{{ noticia.cidade.uf.nome|lower }}</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ noticia.cidade.evento_cidade }}" itemprop="url" title="Veja mais eventos em {{ noticia.cidade.nome }}"><span itemprop="title">{{ noticia.cidade.nome|lower }}</span></a> ›</span>
+                    <span>{{ noticia.evento_noticia.titulo }}</span>
+                </div>
+
+                <div itemscope itemtype="http://data-vocabulary.org/Event">
+
+                    <h1 class="tituloInterna"><span itemprop="summary">{{ noticia.evento_noticia.titulo }} - {{ noticia.dataevento|date:"F - Y" }}</span></h1>
+                    <p class="subtitulo"><span itemprop="description">{{ noticia.evento_noticia.subtitulo }}</span></p>
+
+                    <div id="barratop">
+                        <div id="nomimg">
+                            <p class="autor">
+                                <a rel="me" href="{{ noticia.evento_noticia.usuario.user_colaborador_set.plus }}">
+                                    <img src="{{ noticia.evento_noticia.usuario.user_colaborador_set.foto.url_32x32 }}" width="32" height="32" />
+                                    <p class="aut2">{{ noticia.evento_noticia.usuario }}</a> em {{ noticia.evento_noticia.criado_em|date:"d-F-Y" }}</p>
+                        </div>
+
+                        <div id="midias">
+                            <div id="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ noticia.evento_noticia.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div></div>
+                            <div id="f1"><g:plusone></g:plusone></div>
+                            <div id="tw"><a href="http://juvenis.com.br{{ noticia.evento_noticia.get_absolute_url }}" class="twitter-share-button" data-url="http://juvenis.com.br{{ noticia.evento_noticia.get_absolute_url }}" data-via="JuvenisThe" data-lang="pt">Tweet</a></div>
+                        </div>
+                    </div>
+
+                    <div id="texto">
+                        {% if noticia.evento_noticia.imagem %}
+                        <div id="gallery">
+                            <div id="imgdestaque">
+                               <div id="imgd">
+                                   <a id="example8" href="{{ MEDIA_URL }}{{ noticia.evento_noticia.imagem }}" title="{{ noticia.evento_noticia.titulo }}">
+                                        <img itemprop="photo" src="{{ noticia.evento_noticia.imagem.url_800x600 }}" alt="{{ noticia.evento_noticia.titulo }} - {{ noticia.cidade.nome }}"/>
+                                   </a>
+                               </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div id="limite_texto">
+                            <div id="publicidade_interna">
+                                {% include "adsense/300x250-misto-interna-cima.html" %}
+                            </div>
+                            {{ noticia.evento_noticia.conteudo|safe }}
+
+                            <p>Evento: {{ noticia.evento_noticia.titulo }}<br/>
+                            Categoria: <span itemprop="eventType">{{ noticia.get_categoria_display }}</span><br>
+                            {% if noticia.dataevento %}Data: <time itemprop="startDate" datetime="{{ noticia.dataevento|date:"Y-m-d" }}T19:00-03:00">{{ noticia.dataevento }}</time><br/>{% endif %}
+                            {% if noticia.local %}Local: Como chegar no <span itemprop="location" itemscope itemtype="http://data-vocabulary.org/​Organization">
+                                ​<span itemprop="name"><a href="{{ noticia.local.get_absolute_url }}">{{ noticia.local.nome }}</a>
+                            </span><br/>{% endif %}
+                            Cidade: <span itemprop="locality"><a href="{{ noticia.cidade.evento_cidade }}">{{ noticia.cidade.nome }}</a> - <a href="{{ noticia.cidade.evento_estado }}">{{ noticia.cidade.uf.nome }}</a> </span></span><br/>
+                            Produção: {{ noticia.organizacao }}<br/>
+                            {% if noticia.ingressos %}<span itemprop="ticketAggregate" itemscope itemtype="http://data-vocabulary.org/Offer-aggregate">
+                                Ingressos a partir de R$ <span itemprop="lowPrice">{{ noticia.ingressos }}</span>
+                                <span itemprop="currency" content="BRL" /></span>
+                            </p>
+                            {% endif %}
+
+                            <div id="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ noticia.evento_noticia.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div></div>
+                                <div id="tags">
+                                    Mais sobre: <a href="{{ noticia.cidade.evento_estado }}">{{ noticia.evento_noticia.categoria_nome.nome }} em {{ noticia.cidade.uf.nome }}</a>,
+                                    <a href="{{ noticia.cidade.evento_cidade }}"> {{ noticia.get_categoria_display }} em {{ noticia.cidade.nome }}</a>
+                                </div>
+
+
+                            {% if noticia.evento_noticia.video_noticia_set.all %}
+                            <div id="videoInterna">
+                                <h1 class="tituloSecao1Video2">Video</h1>
+                                <div id="borda8_2"><span class="rodape_interna"></span></div>
+                                {% for video in noticia.evento_noticia.video_noticia_set.all %}
+                                <div id="embe2">
+                                    <iframe width="618" height="345" src="http://www.youtube.com/embed/{{ video.url }}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                {% endfor %}
+                                <p class="subtituloVideo">{{ video.descricao }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div id="publicidade_interna_sub">
+                {% include "adsense/480x60-texto.html" %}
+                </div>
+
+                <div id="relacionadas">
+                    <h1 class="tituloSecao1_relacionadas">Eventos em <a href="{{ noticia.cidade.evento_estado }}">{{ noticia.cidade.uf.nome }}</a></h1>
+                    <div id="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <!-- Código das postagens relacionadas -->
+                    {% for noticia in relacionados %}
+                        <div id="itemRelacionada">
+                            <a href="{{ noticia.evento_noticia.get_absolute_url }}">
+                                <img src="{{ noticia.evento_noticia.imagem.url_200x150 }}" width="200">
+                            </a>
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <h1 class="titulobloco1">{{ noticia.evento_noticia.titulo }}</h1>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div id="nomimg2">
+                    <div class="fb-like" data-href="http://www.facebook.com/SiteJuvenis" data-send="false" data-width="630" data-show-faces="true"></div>
+                </div>
+
+                <div id="comentario">
+                    <h1 class="tituloSecao1Video2">Comente</h1>
+                    <div id="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <div id="comFacebook">
+                        <div class="fb-comments" data-href="http://juvenis.com.br{{ noticia.evento_noticia.get_absolute_url }}" data-num-posts="5" data-width="630"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+</div>
+{% include "footer/footer.html" %}

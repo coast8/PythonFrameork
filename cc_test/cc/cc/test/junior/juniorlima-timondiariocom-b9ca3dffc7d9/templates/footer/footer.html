@@ -1,0 +1,82 @@
+    <div class="row" style="margin-bottom: 0;">
+        <div class="footer-wapper">
+            <div class="principal">
+                <div class="logo">
+                    <img src="{{ STATIC_URL }}site/img/logo-white.fw.png">
+
+                </div>
+                <div class="menus-footer-left">
+                        <span class="footer-title">CATEGORIAS</span>
+                        <ul>
+                            {% for categoria in categorias|slice:"0:9" %}
+                                <li>
+                                    <a href="{{ categoria.get_absolute_url }}">
+                                        {{ categoria.nome }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+                <div class="menus-footer-left">
+                        <span class="footer-title">ASSUNTOS</span>
+                        <ul>
+                            {% for categoria in subcategorias|slice:"0:9" %}
+                                <li>
+                                    <a href="{{ categoria.get_absolute_url }}">
+                                        {{ categoria.nome }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+
+                <div class="menus-footer-left">
+                        <span class="footer-title">LINKS</span>
+                        <ul>
+                            {% for categoria in subcategorias %}
+                                <li>
+                                    <a href="{{ categoria.get_absolute_url }}">
+                                        {{ categoria.nome }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+                <div class="menus-footer-left">
+                        <span class="footer-title">BLOGS</span>
+                        <ul>
+                            {% for blog in blogs %}
+                                <li>
+                                    <a href="{{ blog.blog.get_absolute_url }}">
+                                        {{ blog.blog.nome }} <span class="by">by {{ blog.blog.colaborador.nome }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row" style="margin-bottom: 0;">
+        <div class="footer-wapper-direitos">
+            <div class="principal" style="text-align: center;">
+                <span class="direitos">Todos os direitos reservados a TimonDiário.com - 2015</span>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="{{ STATIC_URL }}menu/js/jquery.dlmenu.js"></script>
+		<script>
+			$(function() {
+				$( '#dl-menu' ).dlmenu({
+					animationClasses : { classin : 'dl-animate-in-4', classout : 'dl-animate-out-4' }
+				});
+			});
+		</script>
+</body>
+</html>

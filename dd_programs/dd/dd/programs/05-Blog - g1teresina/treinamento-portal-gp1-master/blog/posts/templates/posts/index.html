@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block posts %}
+
+{% for p in posts %}
+
+
+<div class="blog-post">
+    <h2 class="blog-post-title">{{ p.titulo }}</h2>
+    <p class="blog-post-meta">{{ p.data_post }} | Postado por: {{ p.usuario.get_full_name }}</p>
+
+    <p>{{ p.descricao_curta }}</p>
+    <hr>
+    {% if p.imagem %}
+        <img src="{{ p.imagem.url }}">
+    {% endif %}
+    <p>
+        {{ p.materia|truncatechars:300 }}
+    </p>
+    <span><a href="{% url 'posts:detalhes' p.id %}">Leia mais</a></span>
+</div><!-- /.blog-post -->
+
+{% endfor %}
+
+<nav>
+    <ul class="pager">
+        {% if posts.has_previous %}
+            <li><a href="?page={{ posts.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+
+        <span class="current">
+            Página {{ posts.number }} de {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <li><a href="?page={{ posts.next_page_number }}">Próximo</a></li>
+        {% endif %}
+  </ul>
+</nav>
+
+{% endblock posts %}

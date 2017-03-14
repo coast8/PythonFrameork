@@ -1,0 +1,35 @@
+{% include "header/header.html" %}
+    <div id="corpo2">
+        <div id="containerInternaBlog">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1Blogs">@Blogs</h1>
+                <div id="borda8_2_blogs">
+                    <span class="rodape_interna"></span>
+                </div>
+                {% for blog in blogs %}
+                <div id="listaBlogs">
+                    <div id="imagemBlog">
+                        <a href="{{ blog.get_absolute_url }}">
+                            <img src="{{ blog.imagem_capa.url_300x225 }}" width="180" height="123">
+                        </a>
+                    </div>
+                    <a href="{{ blog.get_absolute_url }}">
+                        <h1 class="tituloSecao3Blog">{{ blog.nome }}</h1>
+                    </a>
+                        <a href="{{ blog.get_absolute_url }}">
+                            <p class="blogNome">{{ blog.dono }}</p>
+                        </a>
+                        <a href="{{ blog.get_absolute_url }}">
+                            <p class="subhomeBlog">Igreja: {{ blog.igreja }}</p>
+                        </a>
+                        <a href="{{ blog.get_absolute_url }}">
+                            <p class="subhomeBlog">Email: {{ blog.email }}</p>
+                        </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="shadowInterna"></div>
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

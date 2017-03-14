@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>Visita hoje</title>
+</head>
+<body>
+<h1>Visita {{ hoje }}</h1>
+{% for atendimento in atendimentos %}
+<p>{{ atendimento.data_chegada.year }}</p>
+{% endfor %}
+</body>
+</html>

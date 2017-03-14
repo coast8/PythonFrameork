@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}
+	{{ block.super }}
+{% endblock titulo %}
+{% block corpo %}
+	<h1>Bem vindo!</h1>
+	<a href="{% url 'contato:addcontato' %}" title="">Cadastrar contato</a>
+	<a href="{% url 'contato:listacontatos' %}" title="">Listar contato</a>
+{% endblock corpo %}

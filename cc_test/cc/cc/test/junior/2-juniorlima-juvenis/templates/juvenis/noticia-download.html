@@ -1,0 +1,107 @@
+{% include "header/header-download.html" %}
+<div id="containermeio">
+    <div id="corpo3">
+        <div id="containerInterna">
+            <div id="conteudoInterna">
+
+                <div id="breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">juvenis.com.br</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{% url 'noticias.views.downloads' %}" itemprop="url" title="Download de CD Gospel"><span itemprop="title">download</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ noticia.cantor_nome.download_cantor_url }}" itemprop="url" title="Mais downloads de {{ noticia.cantor_nome.nome|lower }}"><span itemprop="title">{{ noticia.cantor_nome.nome }}</span></a> ›</span>
+                    <span>{{ noticia.titulo }}</span>
+                </div>
+
+                <h1 class="tituloInterna">Download CD {{ noticia.cantor_nome.nome }} - {{ noticia.titulo }} - {{ noticia.ano }}</h1>
+                <p class="subtitulo">{{ noticia.titulo }} {{ noticia.cantor_nome.nome }} Download, {{ noticia.titulo }} {{ noticia.cantor_nome.nome }} Baixar</p>
+
+                <div id="barratop">
+                    <div id="nomimg">
+                        <p class="autor">
+                            <a rel="me" href="{{ noticia.usuario.user_colaborador_set.plus }}">
+                                <img src="{{ noticia.usuario.user_colaborador_set.foto.url_32x32 }}" width="32" height="32" />
+                                <p class="aut2">{% if noticia.usuario %}{{ noticia.usuario.first_name }}{% else %}Juvenis{% endif %}</a> em {{ noticia.criado_em|date:"d-F-Y" }}</p>
+                    </div>
+
+                    <div id="midias">
+                        <div id="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div></div>
+                        <div id="f1"><g:plusone></g:plusone></div>
+                        <div id="tw"><a href="http://juvenis.com.br{{ noticia.get_absolute_url }}" class="twitter-share-button" data-url="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-via="JuvenisThe" data-lang="pt">Tweet</a></div>
+                    </div>
+                </div>
+
+                <div id="texto">
+
+                    <div id="limite_texto">
+                        <div id="publicidade_interna_rtg_grd">
+                            {% include "adsense/336x280-misto-download.html" %}
+                        </div>
+
+                    <div id="gallery_download">
+                        <div id="imgdestaque2">
+                           <div id="imgd">
+                               {% if noticia.imagem %}
+                               <img src="{{ noticia.imagem.url_300x225 }}" alt="{{ noticia.titulo }} - {{ noticia.cantor_nome.nome }}">
+                                   {% else %}
+                               <img src="{{ noticia.cantor_nome.foto01.url_300x225 }}" alt="{{ noticia.titulo }} - {{ noticia.cantor_nome.nome }}">
+                                   {% endif %}
+                           </div>
+                        </div>
+                    </div>
+
+                        {{ noticia.conteudo|safe }}
+                        O álbum {{ noticia.titulo }} de {{ noticia.cantor_nome.nome }} tem {{ letras.count }} faixas.
+                        {% for letra in letras %}
+                        <p><a href="{{ letra.get_absolute_url }}" title="Letra - {{ noticia.cantor_nome.nome }} - {{ letra.titulo }}">{{ noticia.cantor_nome.nome }} - {{ letra.titulo }}</a> </p>
+                        {% endfor %}
+
+                        <p>Juvenis não faz o upload do arquivo sem a permissão do autor. Apenas disponibiliza o link para download.</p>
+
+                        <div id="wide">
+                            {% if noticia.download_url %}
+                            <a class="a_demo_four" href="{{ noticia.download_url }}">DOWNLOAD</a>
+                            {% else %}
+                            <a class="a_demo_four" href="{{ noticia.download_url }}">O link foi removido a pedido do autor ou não foi cadastrado</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="publicidade_interna_sub">
+                {% include "adsense/480x60-texto.html" %}
+                </div>
+                {% if relacionados %}
+                <div id="relacionadas">
+                    <h1 class="tituloSecao1_relacionadas">Mais de <a href="{{ noticia.cantor_nome.download_cantor_url }}">{{ noticia.cantor_nome.nome }}</a></h1>
+                    <div id="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <!-- Código das postagens relacionadas -->
+                    {% for noticia in relacionados %}
+                        <div id="itemRelacionada">
+                            <a href="{{ noticia.get_absolute_url }}">
+                                {% if noticia.imagem %}
+                                <img src="{{ noticia.imagem.url_300x225 }}" width="200" alt="{{ noticia.titulo }} - {{ noticia.cantor_nome.nome }}">
+                                {% else %}
+                                <img src="{{ noticia.cantor_nome.foto01.url_300x225 }}" width="200">
+                                {% endif %}
+                            </a>
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <h1 class="titulobloco1">{{ noticia.titulo }}</h1>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div id="comentario">
+                    <h1 class="tituloSecao1Video2">Comente</h1>
+                    <div id="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <div id="comFacebook">
+                        <div class="fb-comments" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-num-posts="5" data-width="630"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+</div>
+{% include "footer/footer.html" %}

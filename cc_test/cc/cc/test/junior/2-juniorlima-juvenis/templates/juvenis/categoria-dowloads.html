@@ -1,0 +1,139 @@
+{% load pagination_tags %}
+{% include "header/header.html" %}
+    <div id="corpo">
+        <div id="secao1">
+            <div id="containerTv">
+                <div id="tv">
+                    <div id="example">
+                        <div id="slides">
+                            <div class="slides_container">
+                                {% for download in down_dest %}
+                                    <div class="slide">
+                                    <a title="{{ download.titulo }}" href="{{ download.get_absolute_url }}">
+                                        <img src="{{ download.cantor_nome.foto01.url_800x600 }}" width="658" alt="{{ download.titulo }}">
+                                    </a>
+                                        <div class="caption" style="bottom:0">
+                                            <a title="{{ download.titulo }}" href="{{ download.get_absolute_url }}">
+                                                <p class="caption-principal">{{ download.titulo }} - {{ download.cantor_nome.nome }}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a href="#" class="prev" style="display: none"><img src="{{ STATIC_URL }}site/img/esquerda.png" width="50" height="50" alt="Esquerda"></a>
+                            <a href="#" class="next" style="display: none"><img src="{{ STATIC_URL }}site/img/direita.png" width="50" height="50" alt="Direita"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="publicidade1">
+                 {% include "adsense/300x250-misto-interna-cima.html" %}
+            </div>
+        </div>
+     </div>
+
+
+    <div id="ContainerSecao2">
+            <div id="secao2">
+                <div id="conteudos2">
+                    <h1 class="tituloSecao1Downloads">Recentes
+                        {% include "adsense/nada.html" %}
+
+                    </h1>
+
+                    <div id="borda">
+                        <span class="rodape"></span>
+                    </div>
+                    {% for noticias in down_rec %}
+                        <div id="bloco">
+                            <a title="{{ noticias.titulo }}" href="{{ noticias.get_absolute_url }}">
+                                <div id="img">
+                                    {% if noticias.imagem %}
+                                    <img src="{{ noticias.imagem.url_300x225 }}" alt="{{ noticias.titulo }}" >
+                                    {% else %}
+                                    <img src="{{ noticias.cantor_nome.foto01.url_300x225 }}" alt="{{ noticias.titulo }}" >
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <p class="chapeu_home">{{ noticias.chamada }}</p>
+                            <a title="{{ noticias.titulo }}" href="{{ noticias.get_absolute_url }}">
+                                <h2 class="titulobloco1Downloads">{{ noticias.titulo|truncatewords:6 }}</h2>
+                            </a>
+                            <!--
+                            <p class="descricao_noticia">
+                                {{ noticias.subtitulo|truncatewords:12 }}
+                            </p>-->
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+
+        </div>
+    </div>
+
+
+    <div id="corpo2">
+
+
+
+        <div id="containerInternaMusicas">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1Downloads">Top 10 Downloads</h1>
+
+                <span class="rodape_interna2_downloads"></span>
+                {% autopaginate down_list 20 %}
+                {% for noticias in down_list|slice:"0:10" %}
+                    <div id="listaBlogs_downloads">
+                        <a href="{{  noticias.get_absolute_url }}">
+                            {% if noticias.imagem %}
+                            <img src="{{ noticias.imagem.url_300x225 }}" class="img-downl">
+                            {% else %}
+                            <img src="{{ noticias.cantor_nome.foto01.url_300x225 }}" class="img-downl">
+                            {% endif %}
+                            <p class="chapeu">{{ noticias.nomeCantor }}</p>
+                            <p class="titulobloco1Downloads">{{ noticias.titulo }}</p>
+                            <p class="subhome_listagem">{{ noticias.subtitulo|truncatewords:19 }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
+
+    <div id="containerInternaMusicas">
+            <div id="conteudoInterna">
+                <h1 class="tituloSecao1Downloads">Top Downloads</h1>
+
+                <span class="rodape_interna2_downloads"></span>
+
+                {% for noticias in down_list|slice:"10:20" %}
+                    <div id="listaBlogs_downloads">
+                        <a href="{{  noticias.get_absolute_url }}">
+                            {% if noticias.imagem %}
+                            <img src="{{ noticias.imagem.url_300x225 }}" class="img-downl">
+                            {% else %}
+                            <img src="{{ noticias.cantor_nome.foto01.url_300x225 }}" class="img-downl">
+                            {% endif %}
+                            <p class="chapeu">{{ noticias.nomeCantor }}</p>
+                            <p class="titulobloco1Downloads">{{ noticias.titulo }}</p>
+                            <p class="subhome_listagem">{{ noticias.subtitulo|truncatewords:19 }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            <div id="paginac">
+                <div id="botoes">
+
+                </div>
+            </div>
+            </div>
+
+            </div>
+        <div id="paginac_down">
+            <div id="botoes">
+                {% paginate %}
+            </div>
+        </div>
+
+        </div>
+        {% include "sidebar/sidebar-noticia.html" %}
+{% include "footer/footer.html" %}

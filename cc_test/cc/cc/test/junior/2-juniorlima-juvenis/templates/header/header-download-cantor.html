@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ cantor.nome }} - Download - Juvenis</title>
+    <meta name="description" content="Download {{ cantor.nome }}, ouvir cd {{ cantor.nome }}, letras de Músicas {{ cantor.nome }} e download em rar. {{ cantor.nome }} 2014, baixar músicas" />
+    <meta name="keywords" content="{{ cantor.nome|lower }} download, baixar cd {{ cantor.nome|lower }}, cd {{ cantor.nome|lower }}, letra {{ cantor.nome|lower }}, baixar {{ cantor.nome|lower }}, ouvir {{ cantor.nome|lower }}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Facebook -->
+    <meta property="og:title" content="{{ cantor.nome }} - Download - Juvenis">
+    <meta property="og:description" content="Download {{ cantor.nome }}, Baixar CD {{ cantor.nome }}, CD {{ cantor.nome }}, Músicas {{ cantor.nome }} 2014">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://juvenis.com.br{{ cantor.get_absolute_url }}" />
+    <meta property="og:site_name" content="Juvenis">
+    {% if noticia.imagem %}
+    <meta property="og:image" content="http://juvenis.com.br{{ noticia.imagem.url_800x600 }}">
+    {% else %}
+    <meta property="og:image" content="http://juvenis.com.br/static/site/img/juvenis-logo.png">
+    {% endif %}
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
+    <!-- Google Plus -->
+    <link href="https://plus.google.com/108260175010004524527" rel="publisher" />
+
+    <meta property="fb:admins" content="545164072246487" />
+    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}site/img/favicon.png" />
+    <link href="{{ STATIC_URL }}site/css/layout-min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="{{ STATIC_URL }}site/js/jquery-1.9.0.min.js"></script>
+
+</head>
+<body>
+    {% include "header/menu.html" %}

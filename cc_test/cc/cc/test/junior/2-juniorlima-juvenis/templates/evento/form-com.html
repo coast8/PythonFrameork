@@ -1,0 +1,21 @@
+Você está no evento:
+{{ insc.evento.nome }} - {{ insc.pessoa.nome }}
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+
+<form target="pagseguro" method="post" action="https://pagseguro.uol.com.br/v2/checkout/cart.html?action=add">
+
+        <!-- Campos obrigatórios -->
+        <input type="hidden" name="receiverEmail" value="webjuniorlima@gmail.com" />
+        <input type="hidden" name="currency" value="BRL" />
+        <input type="hidden" name="itemId" value="036854" />
+        <input type="hidden" name="itemDescription" value="{{ insc.evento.nome }}" />
+        <input type="hidden" name="itemQuantity" value="1" />
+        <input type="hidden" name="itemAmount" value="{{ insc.ingresso.preco }}" />
+        <input type="hidden" name="itemShippingCost" value="0.00" />
+
+        <!-- submit do form (obrigatório) -->
+        <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/205x30-comprar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+
+    </form>
+<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->

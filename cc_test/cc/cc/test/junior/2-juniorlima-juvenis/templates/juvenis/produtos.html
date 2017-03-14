@@ -1,0 +1,33 @@
+{% include "header/header.html" %}
+    <div id="corpo">
+        <div id="ContainerSecao2">
+            <div id="secao2Shop">
+                <div id="conteudos2">
+                    <h1 class="tituloShop">ShopJuvenis</h1>
+                    <div id="borda8">
+                        <span class="rodape"></span>
+                    </div>
+                    <div id="listaProdutos">
+                        {% for produto in produtos %}
+                        <div id="produto">
+                            <div id="imgProduto">
+                                <a href="{{  produto.get_absolute_url }}">
+                                    <img src="{{ produto.fotoum.url_263x172 }}" width="272">
+                                </a>
+                            </div>
+                            <p class="produtoTitulo">{{ produto.titulo }}</p>
+                            <p class="promo">De: R$ {{ produto.preconormal }}</p>
+                            <p class="vFinal">Por: R$ {{ produto.precofinal }}</p>
+                            <a href="{{ produto.get_absolute_url }}">
+                                <div id="btnComprar">Comprar</div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="shadowsecao"></div>
+        </div>
+        </div>
+
+    {% include "footer/footer.html" %}

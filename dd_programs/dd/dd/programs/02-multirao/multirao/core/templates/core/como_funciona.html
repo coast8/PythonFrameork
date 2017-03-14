@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block titulo %}
+	Como funciona | {{ block.super }}
+{% endblock titulo %}
+
+{% block row %}
+	{% for c in como_funciona %}
+		<h1>{{ c.titulo }}</h1>
+		<p>
+			{{ c.descricao }}
+		</p>
+	{% endfor %}
+{% endblock row %}

@@ -1,0 +1,135 @@
+{% load staticfiles %}  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- > meta tegs, funções para o google localizar usando palavras chaves<-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="all" />
+<meta name="keywords" content="Brasil, agricultura, produtos
+rurais, veterinários, rural, agropecuário, pecuária, produtos veterinários online,
+ecommerce rural, loja agropecuária." />
+
+<meta name="description" content="Brasil Agricultura, “aqui você encontra tudo para o
+homem do campo: produtos rurais, veterinários, agropecuários e muito mais”." />
+
+<link href="{% static "imgs/favicon.png" %}" rel="shortcut icon" "image/png"/>
+
+<title> Brasil Agricultura – Produtos
+para o homem do campo</title>
+<link href="{% static "CSS/estilos.css" %}" rel="stylesheet" type="text/css" />
+<script src="{% static "Scripts/swfobject_modified.js" %}" type="text/javascript"></script>
+<style type="text/css">
+a:link {
+	color: #000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+</style>
+</head>
+
+
+<body>
+<div id="container" class="container">
+
+<div id="logotipo" class="logotipo"><img src="{% static "imgs/logotipo.png" %}" width="220" height="160" alt="Brasil Agricultura" /></div>
+<div id="menu" class="menu">
+<p class="BarraMenu">
+
+
+
+<a href="{% url 'core:index' %}"> Home </a>
+<a href="{% url 'core:quemsomos' %}"> Quem Somos </a>
+<a href="{% url 'core:produtos' %}"> Produtos </a>
+<a href="{% url 'core:contatos' %}"> Contato </a>
+<a href="{% url 'core:clientes' %}"> Clientes </a>
+<a href="{% url 'core:extras' %}"> Extras </a></p>
+
+</div>
+<div id="imagem" class="imagem">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="960" height="265" id="FlashID" title="Imagens">
+    <param name="movie" value="flash/imagens.swf" />
+    <param name="quality" value="high" />
+    <param name="wmode" value="opaque" />
+    <param name="swfversion" value="9.0.45.0" />
+    <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+    <param name="expressinstall" value="Scripts/expressInstall.swf" />
+    <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+    <!--[if !IE]>-->
+    <object type="application/x-shockwave-flash" data="flash/imagens.swf" width="960" height="265">
+      <!--<![endif]-->
+      <param name="quality" value="high" />
+      <param name="wmode" value="opaque" />
+      <param name="swfversion" value="9.0.45.0" />
+      <param name="expressinstall" value="Scripts/expressInstall.swf" />
+      <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+      <div>
+        <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+        <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+      </div>
+      <!--[if !IE]>-->
+    </object>
+    <!--<![endif]-->
+  </object>
+</div>
+
+<div id="principal" class="principal">
+  <p><img src="{% static "imgs/titulo_quemsomos.png" %}" width="625" height="64" /></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p class="texto">Fundada em 1980 na cidade de São Paulo SP, a Brasil Agricultura iniciou suas<br />
+    atividades no comércio varejista de produtos veterinários aos pecuaristas da região. A<br />
+    partir de 1985, já em sua sede própria, começou a atuar também no mercado atacadista<br />
+    fornecendo produtos veterinários a outras revendas do estado. Em 1997 a Brasil<br />
+    Agricultura direciona seus trabalhos da mesma forma para o mercado de insumos<br />
+    agrícolas, gerando assim uma integração entre a agricultura e a pecuária.</p>
+  <p>&nbsp;</p>
+  <p class="texto">Para oferecer o melhor atendimento a Brasil Agricultura possui um departamento<br />
+    técnico com profissionais especializados no agronegócio. A comercialização de<br />
+    produtos possui como vantagens assistência técnica especializada com foco no bem<br />
+    estar animal, uma das exigências do consumidor moderno, levando ao produtor rural<br />
+    produtos e serviços que se transformam em lucratividade no campo.</p>
+<p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<p>&nbsp;</p>
+  <p><br />
+  </p>
+  <p class="imgs">&nbsp;</p>
+  <p class="imgs">&nbsp;</p>
+  <p class="imgs">&nbsp;</p>
+</div>
+<div id="noticias" class="noticias">
+  <p><img src="imgs/titulo_noticias.png" width="335" height="64" alt="Noticias" /></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_29_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% static "noticias.html" %}" target="_self">Pesquisa com café contribui para a sustentabilidade da produção.</a></span></p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_28_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% static "notcias.html" %}" target="_self">Evento no Rio Grande do Norte certifica organismos de controle social.</a></span></p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_27_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% static "noticias.html" %}" target="_self">Estudo reforça cultivo de café de base ecologica.</a></span></p>
+</div>
+<div id="rodape" class="rodape"><img src="{% static "imgs/rodape.png" %}" alt="" width="960" height="110" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="35,32,96,92" href="http://www.twitter.com.br" target="_blank" alt="Linkin do Twitter" />
+    <area shape="rect" coords="108,34,169,94" href="http://www.facebook.com.br" target="_blank" alt="Linkin do Facebook" />
+  </map>
+</div>
+
+</div>
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+</script>
+</body>
+</html>

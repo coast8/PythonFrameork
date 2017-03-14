@@ -1,0 +1,253 @@
+{% extends 'site/base.html' %}
+{% block container %}
+
+      <div class="row featured-full">
+  <div class="col-md-12">
+    <div class="flexslider">
+      <div class="featured-slider">
+        {% for noticia in noticias|slice:"0:3" %}
+        <div class="slider-item">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="featured-big">
+                <a href="{{ noticia.get_absolute_url }}">
+                  <img src="http://placehold.it/1175x500" alt=""/>
+                  <div class="featured-header">
+                    <span class="category bgcolor2">{{ noticia.categoria.nome }}</span>
+                    <h2>{{ noticia.titulo }}</h2>
+                    <p class="simple-share">
+                      by <b>{{ noticia.usuario }}</b> -
+                      <span class="article-date">25 minutes ago</span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div><!-- .row -->
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</div><!-- .featured-wrapper -->
+      <div class="row main-tech">
+        <div class="col-md-12">
+          <h3 class="block-title"><span>Últimas</span></h3>
+        </div>
+      </div>
+
+      <div class="row">
+        {% for noticia in noticias|slice:"3:4" %}
+        <div class="col-md-8">
+          <article class="featured-small box-news box-big">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">Gadget</a>
+              <h2><a href="#">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>{{ noticia.usuario }}</b></a> -
+                <span class="article-date">25 minutes ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+        {% endfor %}
+        {% for noticia in noticias|slice:"4:5" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="{{ noticia.get_absolute_url }}">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">Apps</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>{{ noticia.usuario }}</b></a> -
+                <span class="article-date">34 minutes ago</span>
+                <span class="star-reviews">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                </span>
+              </p>
+            </header>
+          </article>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+      {% for noticia in noticias|slice:"5:8" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>{{ noticia.usuario }}</b></a> -
+                <span class="article-date">52 minutes ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+          {% endfor %}
+       </div>
+
+      <div class="row">
+      {% for noticia in noticias|slice:"8:9" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date">2 hours ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+          {% endfor %}
+      {% for noticia in noticias|slice:"9:10" %}
+        <div class="col-md-8">
+          <article class="featured-small box-news box-big">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date">25 minutes ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+      {% endfor %}
+      </div>
+
+      <!-- Mid ad -->
+<div class="row">
+   <div class="col-md-12">
+     <div class="ad728-wrapper mid-wrapper">
+       <a href="#">
+         <img src="http://placehold.it/728x90" alt=""/>
+       </a>
+     </div>
+   </div>
+</div>
+<!-- End Mid ad -->
+      <div class="row">
+      {% for noticia in noticias|slice:"10:11" %}
+        <div class="col-md-8">
+          <article class="featured-small box-news box-big">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date">4 hours ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+          {% endfor %}
+          {% for noticia in noticias|slice:"11:12" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date">3 minutes ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+      {% endfor %}
+      </div>
+
+      <div class="row">
+      {% for noticia in noticias|slice:"12:15" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date">4 hours ago</span>
+              </p>
+            </header>
+          </article>
+        </div>
+          {% endfor %}
+       </div>
+
+      <div class="row">
+      {% for noticia in noticias|slice:"15:16" %}
+        <div class="col-md-4">
+          <article class="featured-small box-news">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date"> Yesterday</span>
+              </p>
+            </header>
+          </article>
+        </div>
+          {% endfor %}
+      {% for noticia in noticias|slice:"16:17" %}
+        <div class="col-md-8">
+          <article class="featured-small box-news box-big">
+            <a href="#">
+              <img src="http://placehold.it/730x320" alt=""/>
+            </a>
+            <header class="featured-header">
+              <a class="category bgcolor2" href="#">{{ noticia.categoria.nome }}</a>
+              <h2><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h2>
+              <p class="simple-share">
+                by <a href="#"><b>John Doe</b></a> -
+                <span class="article-date"> Yesterday</span>
+              </p>
+            </header>
+          </article>
+        </div>
+      {% endfor %}
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+            <div class="load-more">
+            <button type="button" class="btn btn-lg btn-block">Todas as notícias</button>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ letra.titulo }} -  {{ letra.album_nome.cantor_nome }} - Letra</title>
+    <meta name="description" content="{{ letra.album_nome.cantor_nome }} - Letra {{ letra.titulo }}. {{ letra.conteudo|truncatewords:"20" }}. " />
+    <meta name=pagetype content="letra">
+    <meta name="keywords" content="baixar {{ letra.titulo }}, letra {{ letra.titulo }}, "/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Facebook -->
+    <meta property="og:title" content="{{ letra.titulo }} - Juvenis">
+    <meta property="og:description" content="Essa letra é muito boa. Letra da música {{ letra.titulo }} do cantor {{ letra.album_nome.cantor_nome }}. Bom gosto é para poucos">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://juvenis.com.br{{ letra.get_absolute_url }}" />
+    <meta property="og:site_name" content="Juvenis">
+    <meta property="og:image" content="http://juvenis.com.br{{ letra.album_nome.cantor_nome.foto01.url_100x75 }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
+
+    <meta property="fb:admins" content="545164072246487" />
+    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}site/img/favicon.png" />
+    <link href="{{ STATIC_URL }}site/css/layout-min.css" rel="stylesheet" type="text/css" />
+    {% include 'extras/tynt-js.html' %}
+</head>
+<body>
+{% include "header/menu.html" %}

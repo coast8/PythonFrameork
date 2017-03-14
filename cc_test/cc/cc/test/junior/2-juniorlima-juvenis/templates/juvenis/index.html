@@ -1,0 +1,548 @@
+{% load thumbnail %}
+{% include "header/header.html" %}
+    <div id="corpo">
+        <div id="secao1">
+            <div id="containerTv">
+                <div id="tv">
+                    <div id="example">
+                        <div id="slides">
+                            <div class="slides_container">
+                                {% for noticia in destaque %}
+                                    <div class="slide">
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <img src="{{ noticia.imagem.url_800x600 }}" width="658" alt="{{ noticia.titulo }}">
+                                    </a>
+                                        <div class="caption" style="bottom:0">
+                                            <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                                <p class="caption-principal">{{ noticia.titulo }}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a href="#" class="prev" style="display: none"><img src="{{ STATIC_URL }}site/img/esquerda.png" width="50" height="50" alt="Esquerda"></a>
+                            <a href="#" class="next" style="display: none"><img src="{{ STATIC_URL }}site/img/direita.png" width="50" height="50" alt="Direita"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="publicidade336">
+                {% include "adsense/300x250-misto-interna-cima.html" %}
+            </div>
+        </div>
+        <div id="ContainerSecao2">
+            <div id="secao2">
+                <div id="conteudos2">
+                    <h1 class="tituloSecao1">Notícias
+
+                        <a href="{% url 'noticias.views.homepage' %}">
+                            <span class="add">
+                                +
+                            </span>
+                        </a>
+                    </h1>
+
+                    <div id="borda">
+                        <span class="rodape"></span>
+                    </div>
+                    {% for noticia in noticias  %}
+                        <div id="bloco">
+                            <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                {% if noticia.imagem %}
+                                <div id="img">
+                                    <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" >
+                                </div>
+                                {% endif %}
+                            </a>
+                            <p class="chapeu_home">{{ noticia.chamada }}</p>
+                            <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                <h2 class="titulobloco1">{{ noticia.titulo }}...</h2>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            <div id="itens_mais">
+                <ul>
+                    {% for noticia in noticias  %}
+                        {% if noticia.chamada != null %}
+                            <a href="#">
+                                <li>{{ noticia.chamada }}</li>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+                <a href="/noticias">
+                        <div class="mais_noticias">
+                            Mais Notícias
+                        </div>
+                    </a>
+            </div>
+            <div id="shadowsecao"></div>
+        </div>
+        <div id="ContainerSecao3">
+            <div id="secao3">
+                <div id="conteudos2">
+                    <h1 class="tituloSecao3">Humor
+
+                        <a href="/humor/">
+                            <span class="add_humor">
+                                +
+                            </span>
+                        </a>
+                    </h1>
+                    <div id="borda3">
+                        <span class="rodape"></span>
+                    </div>
+                    <div id="secao3Bloco1">
+                        {% for noticia in humor|slice:"0:1" %}
+                            <div id="secao_left_humor">
+                                <div id="img1Eventos">
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="301">
+                                    </a>
+                                </div>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <p class="titulobloco2">{{ noticia.titulo|truncatewords:9 }}</p>
+                                </a>
+                                <p class="subhome">{{ noticia.subtitulo|truncatewords:17 }}</p>
+                            </div>
+                        {% endfor %}
+                        {% for noticia in humor|slice:"1:3" %}
+                            <div id="itemsubbloco">
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                </a>
+                                <!--<p class="chapeu">{{ noticia.chamada }}</p>-->
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <h1 class="titulobloco2_sub">{{ noticia.titulo }}</h1>
+                                    <p class="subhomeMeio">{{ noticia.subtitulo|truncatewords:10 }}</p>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div id="secao3Bloco2">
+
+                        <div id="subbloco1">
+                            {% for noticia in humor|slice:"3:7" %}
+                                <div id="itemsubbloco">
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                    </a>
+                                    <p class="chapeu">{{ noticia.chamada }}</p>
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <h1 class="titulobloco2_sub">{{ noticia.titulo }}</h1>
+
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="secaoBloco3">
+                        {% include "adsense/300x250-misto-interna-cima.html" %}
+                        <br>
+                    </div>
+
+                </div>
+                <a href="/humor/">
+                        <div class="mais_noticias">
+                            Mais humor
+                        </div>
+                 </a>
+            </div>
+            <div id="shadowsecao"></div>
+        </div>
+
+        <div id="ContainerSecao3">
+            <div id="secao4">
+                <div id="conteudos2">
+                    <div id="colunaesq">
+                        <h1 class="tituloSecao4">Eventos
+                            <a href="/eventos/">
+                                <span class="add_evento">
+                                    +
+                                </span>
+                            </a>
+                        </h1>
+                        <div id="borda5">
+                            <span class="rodape2"></span>
+                        </div>
+                        {% for noticia in eventos %}
+                                <div id="secao4itens">
+                                    <a title="{{ noticia.evento_noticia.titulo }}" href="{{ noticia.evento_noticia.get_absolute_url }}">
+                                        <img src="{{ noticia.evento_noticia.imagem.url_200x150 }}" alt="{{ noticia.evento_noticia.titulo }}" width="140" height="91">
+                                    </a>
+                                    <p class="chapeu">{{ noticia.dataevento }} - <a href="{{ noticia.cidade.evento_cidade }}">{{ noticia.cidade.nome }}</a> - <a href="{{ noticia.cidade.evento_estado }}">{{ noticia.cidade.uf.nome }}</a></p>
+                                    <a href="{{ noticia.evento_noticia.get_absolute_url }}">
+                                        <h1 class="titulobloco4">{{ noticia.evento_noticia.titulo }}</h1>
+                                        <p class="subhomeMeio">{{ noticia.evento_noticia.subtitulo|truncatewords:22 }}</p>
+                                    </a>
+                                </div>
+                        {% endfor %}
+                         <a href="/eventos/">
+                                <div class="mais_noticias">
+                                    Mais eventos
+                                </div>
+                         </a>
+                    </div>
+                    <div id="colummdir">
+                        <h1 class="tituloSecao4_right">Coberturas
+                            <a href="{% url 'noticias.views.galerias' %}">
+                            <span class="add_cobertura">
+                                +
+                            </span>
+                            </a>
+                        </h1>
+                        <div id="borda4">
+                            <span class="rodape2"></span>
+                        </div>
+
+                    {% for galeria in galeriasfilter %}
+                            <div id="secao4itens">
+                            {% if galeria.foto_galeria_set.all %}
+                                    <div id="lista_imagem">
+                                    {% for foto in galeria.foto_galeria_set.all|slice:"0:5" %}
+                                        {% thumbnail foto.img "170x127" crop="center" as im %}
+                                            <a title="{{ galeria.titulo }}" href="{{ galeria.get_absolute_url }}">
+                                                <img src="{{ im.url }}" alt="{{ galeria.titulo }}" width="90px" height="53px">
+                                            </a>
+                                        {% endthumbnail %}
+                                    {% endfor %}
+                                    </div>
+                                    {% else %}
+                                Aguardando envio de fotos...
+                            {% endif %}
+                                <p class="chapeu">{{ galeria.chamada }}</p>
+                                <a href="{{ galeria.get_absolute_url }}">
+                                    <h1 class="titulobloco4_2">{{ galeria.titulo }}</h1>
+                                </a>
+                            </div>
+                        {% endfor %}
+
+                        <a href="{% url 'noticias.views.galerias' %}">
+                                <div class="mais_noticias">
+                                    Mais coberturas
+                                </div>
+                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shadowsecao"></div>
+
+
+        <div class="ContainerSecao2">
+            <div class="secao2_downloads">
+                <div class="conteudos2">
+                    <h1 class="tituloSecao1_downloads">Downloads
+                        <a href="{% url 'noticias.views.downloads' %}"><span class="add_downloads">+</span></a>
+                    </h1>
+
+                    <div class="borda_downloads"><span class="rodape"></span></div>
+
+                    {% for noticia in downloads|slice:"0:8"  %}
+                            <div class="bloco">
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                <div id="img">
+                                    {% if noticia.imagem %}
+                                        <img src="{{ noticia.imagem.url_300x225 }}" alt="{{ noticia.titulo }}" width="220" >
+                                    {% else %}
+                                        <img src="{{ noticia.cantor_nome.foto01.url_300x225 }}" alt="{{ noticia.titulo }}" width="220" >
+                                    {% endif %}
+                                </div>
+                                </a>
+                                <p class="chapeu_home"><a href="{{ noticia.cantor_nome.download_cantor_url }}">{{ noticia.cantor_nome.nome }}</a></p>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <h2 class="titulobloco1_downloads">{{ noticia.titulo }}</h2>
+                                </a>
+                            </div>
+                    {% endfor %}
+                </div>
+            <div class="itens_mais">
+                <ul>
+                    {% for noticias in cantores|slice:"0:8"  %}
+                        <a href="#"><li>{{ noticias.nome }}</li></a>
+                    {% endfor %}
+                </ul>
+            </div>
+                <a href="{% url 'noticias.views.downloads' %}"><div class="mais_noticias">Mais Downloads</div></a>
+            </div>
+            </div>
+            <div class="shadowsecao"></div>
+        </div>
+
+        <div class="ContainerSecao3">
+            <div class="secao2">
+                <div class="conteudos2">
+                    <h1 class="tituloSecao6">Vídeos<a href="/videos/"><span class="add">+</span></a></h1>
+                    <div class="borda6"><span class="rodape"></span></div>
+                    <div class="videoLeft">
+                        {% for noticia in videos|slice:"0:1" %}
+                            <div class="videodestaquehome">
+                                <a title="{{ noticia.video_noticia.titulo }}" href="{{ noticia.video_noticia.get_absolute_url }}">
+                                    <span class="iconeVideoDestaque" ></span>
+                                    <img src="{{ noticia.video_noticia.imagem.url_800x600 }}" alt="{{ noticia.video_noticia.titulo }}">
+                                </a>
+                                <p class="chapeu">{{ noticia.video_noticia.chamada }}</p>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.video_noticia.get_absolute_url }}">
+                                    <h1 class="titulovideo">{{ noticia.video_noticia.titulo }}</h1>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="videosRight">
+                        {% for noticia in videos|slice:"1:7" %}
+                            <div class="videos">
+                                <a title="{{ noticia.video_noticia.titulo }}" href="{{ noticia.video_noticia.get_absolute_url }}">
+                                    <span class="iconeVideo" ></span>
+                                    <img src="{{ noticia.video_noticia.imagem.url_200x150 }}" alt="{{ noticia.video_noticia.titulo }}">
+                                </a>
+                                <p class="chapeu">{{ noticia.video_noticia.chamada }}</p>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.video_noticia.get_absolute_url }}">
+                                    <h1 class="titulovideo">{{ noticia.video_noticia.titulo|truncatewords:5 }}</h1>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <a href="/videos/"><div class="mais_noticias">Mais vídeos</div></a>
+
+                </div>
+            <div class="shadowsecao"></div>
+        </div>
+
+        <div class="ContainerSecao3">
+            <div class="secao8">
+                <div class="conteudos2">
+                    <h1 class="tituloSecao8">Músicas<a href="/musica/"><span class="add_musicas">+</span></a></h1>
+                    <div class="borda8">
+                        <span class="rodape"></span>
+                    </div>
+                    <div class="secao3Bloco1">
+                        <h1 class="tituloSecao8_sub">Cantores</h1>
+                        {% for cantor in cantores %}
+                                <div class="secao_left_musica">
+                                    <div class="img_cantor_foto">
+                                        <a title="{{ cantor.nome }}" href="{{ cantor.get_absolute_url }}">
+                                            <img src="{{ cantor.foto01.url_100x75 }}" alt="{{ cantor.nome }}">
+                                        </a>
+                                    </div>
+                                    <a title="{{ cantor.nome }}" href="{{ cantor.get_absolute_url }}">
+                                        <p class="titulomusica">{{ cantor.titulo }}</p>
+                                    </a>
+                                    <p class="subhome_letra">{{ cantor.nome }}</p>
+                                </div>
+                            {% endfor %}
+                    </div>
+
+                    <div class="secao3Bloco2_artigos">
+                        <h1 class="tituloSecao8_sub">Albuns
+                        </h1>
+                        <div class="subbloco1">
+
+                            {% for album in albuns %}
+                                <div class="secao_left_musica">
+                                    <div class="img_cantor_foto">
+                                        <a title="{{ album.titulo }}" href="{{ album.get_absolute_url }}">
+                                            {% if album.imagem %}
+                                                <img src="{{ album.imagem.url_100x75 }}" alt="{{ album.titulo }}" width="220" >
+                                            {% else %}
+                                                <img src="{{ album.cantor_nome.foto01.url_100x75 }}" alt="{{ noticia.titulo }}" width="220" >
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <a title="{{ album.titulo }}" href="{{ album.get_absolute_url }}">
+                                        <p class="titulomusica">{{ album.titulo }}</p>
+                                    </a>
+                                    <p class="subhome_letra">{{ album.cantor_nome.nome }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="secao3Bloco2_artigos">
+                        <h1 class="tituloSecao8_sub">Letras
+
+                        </h1>
+                        <div class="subbloco1">
+                            {% for letra in letras %}
+                                <div class="secao_left_musica">
+                                    <div class="img_cantor_foto">
+                                        <a title="{{ letra.cantor_nome.nome }}" href="{{ letra.get_absolute_url }}">
+                                            {% if letra.album_nome.imagem %}
+                                                <img src="{{ letra.album_nome.imagem.url_100x75 }}" alt="{{ letra.cantor_nome.nome }}">
+                                            {% else %}
+                                            <img src="{{ letra.album_nome.cantor_nome.foto01.url_100x75 }}" alt="{{ letra.cantor_nome.nome }}">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <a title="{{ letra.titulo }}" href="{{ letra.get_absolute_url }}">
+                                        <p class="titulomusica">{{ letra.titulo }}</p>
+                                    </a>
+                                    <p class="subhome_letra">{{ letra.cantor_nome.nome }}</p>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/letra/"><div class="mais_noticias">Mais música</div></a>
+
+                </div>
+
+            <div class="shadowsecao"></div>
+        </div>
+
+    <div class="ContainerSecao3">
+            <div class="secao3_blog">
+                <div class="conteudos2">
+                    <h1 class="tituloSecao3_blogs">Blogs<a href="{% url 'noticias.views.blogs' %}"><span class="add_blog">+</span></a></h1>
+                    <div class="borda3_blog"><span class="rodape"></span></div>
+                    <div class="secao3Bloco1">
+                        {% for noticia in destaquesblog|slice:"0:1" %}
+                            <div class="secao_left_blog">
+                                    <div class="img1Eventos">
+                                        <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                            {% if noticia.imagem %}
+                                            <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="301">
+                                                {% else %}
+                                            <img src="{{ noticia.blog.blog.imagem_capa.url_300x225 }}" alt="{{ noticia.titulo }}" width="301">
+                                                {% endif %}
+                                        </a>
+                                    </div>
+                                <a href="{{ noticia.blog.blog.get_absolute_url }}">
+                                    <p class="chapeu_home">{{ noticia.blog.blog.nome }}</p>
+                                </a>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <p class="titulobloco2_blog">{{ noticia.titulo }}</p>
+                                </a>
+                            </div>
+                        {% endfor %}
+                        {% for noticia in destaquesblog|slice:"1:3" %}
+                            <div class="itemsubbloco">
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    {% if noticia.imagem %}
+                                    <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                    {% else %}
+                                        <img src="{{ noticia.blog.blog.imagem_capa.url_300x225 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                    {% endif %}
+                                </a>
+
+                                <!--<p class="chapeu">{{ noticia.chamada }}</p>-->
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <h1 class="titulobloco2_subblog">{{ noticia.titulo }}</h1>
+                                </a>
+                                <p class="subhomeMeio">{{ noticia.subtitulo|truncatewords:10 }}</p>
+                                <a href="{{ noticia.get_absolute_url }}">
+                                    <span class="detalhes_btn">DETALHES</span>
+                                </a>
+                                <a href="{{ noticia.blog.blog.get_absolute_url }}">
+                                    <span class="top_home">{{ noticia.blog.blog.nome }}</span>
+                                </a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="secao3Bloco2">
+
+                        <div class="subbloco1">
+                            {% for noticia in destaquesblog|slice:"3:7" %}
+                                <div class="itemsubbloco">
+                                    {% if noticia.imagem != '' %}
+                                        <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                            <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                        </a>
+                                    {% endif %}
+                                    <!--<p class="chapeu">{{ noticia.chamada }}</p>-->
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <h1 class="titulobloco2_subblog">{{ noticia.titulo }}</h1>
+                                        <p class="subhomeMeio">{{ noticia.subtitulo|truncatewords:10 }}</p>
+                                    </a>
+                                    <a href="{{ noticia.get_absolute_url }}">
+                                        <span class="detalhes_btn">DETALHES</span>
+                                    </a>
+                                    <a href="{{ noticia.blog.blog.get_absolute_url }}">
+                                        <span class="top_home">{{ noticia.blog.blog.nome }}</span>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="secaoBloco3">
+                        <p class="legenda">Curta nossa página no Facebook</p>
+                        {% include "extras/facebook-likebox.html" %}
+                    </div>
+                    <div class="secaoBloco3">
+                        {% include "adsense/300x250-misto-interna-cima.html" %}
+                    </div>
+
+
+                </div>
+                <a href="{% url 'noticias.views.blogs' %}"><div class="mais_noticias">mais blogs</div></a>
+
+
+                <div class="conteudos2_artigos">
+                    <h1 class="tituloSecao3_artigos">Artigos<a href="/artigos/"><span class="add_artigos">+</span></a></h1>
+                    <div class="borda3_artigos"><span class="rodape"></span></div>
+                    <div class="secao3Bloco1">
+                        {% for noticia in artigos|slice:"0:1" %}
+                            <div class="secao_left_humor">
+                                <div class="img1Eventos">
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <img src="{{ noticia.imagem.url_800x600 }}" alt="{{ noticia.titulo }}" width="301">
+                                    </a>
+                                </div>
+                                <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                    <p class="titulobloco2_artigos">{{ noticia.titulo }}</p>
+                                </a>
+                                <p class="subhome">{{ noticia.subtitulo|truncatewords:17 }}</p>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="secao3Bloco2_artigos">
+
+                        <div class="subbloco1">
+                            {% for noticia in artigos|slice:"1:4" %}
+                                <div class="itemsubbloco">
+                                    {% if noticia.imagem != '' %}
+                                        <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                            <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                        </a>
+                                    {% endif %}
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <h1 class="titulobloco2_sub_artigos">{{ noticia.titulo }}</h1>
+                                        <p class="subhomeMeio">{{ noticia.subtitulo|truncatewords:10 }}</p>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="secao3Bloco2_artigos">
+                        <div class="subbloco1">
+                            {% for noticia in artigos|slice:"4:7" %}
+                                <div class="itemsubbloco">
+                                    {% if noticia.imagem != '' %}
+                                        <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                            <img src="{{ noticia.imagem.url_200x150 }}" alt="{{ noticia.titulo }}" width="100" height="71">
+                                        </a>
+                                    {% endif %}
+                                    <a title="{{ noticia.titulo }}" href="{{ noticia.get_absolute_url }}">
+                                        <h1 class="titulobloco2_sub_artigos">{{ noticia.titulo }}</h1>
+                                        <p class="subhomeMeio">{{ noticia.subtitulo|truncatewords:10 }}</p>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/artigos"><div class="mais_noticias">mais artigos</div></a>
+            </div>
+            </div>
+            <div class="shadowsecao"></div>
+{% include "footer/footer.html" %}

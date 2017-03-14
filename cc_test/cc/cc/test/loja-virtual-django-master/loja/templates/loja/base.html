@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="pt-br">
+    <head>
+        <title>{% block title%}{% endblock %}</title>
+        <link href="{% static 'loja/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+        <script src="{% static 'loja/js/jquery.js' %}"></script>
+        <script src="{% static 'loja/js/bootstrap.js' %}"></script>
+        {% block extra_scripts %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{% url 'loja:index' %}">Loja Virtual</a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'loja:cadastro' %}">Cadastrar</a></li>
+                            <li><a href="{% url 'loja:index' %}">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        {% block footer %}{% endblock %}
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

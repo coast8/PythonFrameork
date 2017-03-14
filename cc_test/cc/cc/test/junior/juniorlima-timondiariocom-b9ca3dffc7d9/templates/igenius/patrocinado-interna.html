@@ -1,0 +1,251 @@
+{% include "header/h-interna.html" %}
+<body class="pinterna">
+    {% include "header/header-interna.html" %}
+
+    <div class="row">
+
+        <div class="bloco-categoria-{{ noticia.subcategoria.categoria.slugcategoria }}">
+                    <div class="principal">
+                            <div class="wapper-categoria-interna">
+                                <div class="nome-categoria">
+                                    <h1>{{ noticia.subcategoria.categoria.nome }}</h1>
+                                </div>
+
+                                <div class="menu-categoria">
+                                    {% for subcategoria in subcategoria %}
+                                        <a href="{{ subcategoria.get_absolute_url }}">
+                                            <div class="m-categoria">
+                                                {{ subcategoria.nome }}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        <div class="principal">
+
+
+
+            <div class="coluna-interna-{{ noticia.subcategoria.categoria.slugcategoria }}">
+
+
+
+                <div class="header-interna">
+                    <!--
+                    <span class="chamada-interna">Inicio /
+                        <a href="">{{ noticia.subcategoria.nome }}</a> /
+                        <a href="">{{ noticia.subcategoria.categoria.nome }}</a>
+
+                    </span>-->
+                    <h1>{{ publicidade.nome }}</h1>
+                    <p>{{ noticia.subtitulo }}</p>
+                    <div class="barra-detalhes-interna">
+                        <a href="{{ noticia.link }}">
+                            <span class="autor-nome">Fonte: {{ noticia.fonte.nome }}</span>
+                        </a>
+                        <span class="autor-nome">Publicado Por: {{ noticia.autor.nome }}</span>
+
+                    </div>
+                </div>
+
+                <div class="conteudo-interna">
+                    {% for publicidade in publicidade %}
+                        {% if publicidade.tipo == "1" %}
+                            <div class="publicidade-interna">
+                                <img src="{{ MEDIA_URL }}{{ publicidade.arquivo }}">
+                                <!--
+                                <div class="rel-interna-left">
+                                    <span class="">NOTICIAS</span>
+
+                                    <div class="rel-interna-item">
+                                        <div class="item-rel-left">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="imagem-principal-interna">
+                        <img src="{{ noticia.imagemDestaque.url_800x600 }}">
+                    </div>
+                    {{ noticia.conteudo|safe }}
+
+                    <div class="barra-detalhes-interna">
+                        {% for publicidade in publicidade %}
+                            {% if publicidade.tipo == "2" %}
+                                <div class="publicidade-interna">
+                                    <div class="publicidade-wapper">
+                                        <img src="{{ MEDIA_URL }}{{ publicidade.arquivo }}">
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="painel-comentarios">
+                        <div class="topo-comentario">
+                            <span class="comentario-{{ noticia.subcategoria.categoria.slugcategoria }}">COMENTÁRIOS</span>
+                        </div>
+
+                        <div class="wapper-comentario">
+                                <div id="disqus_thread"></div>
+                                <script type="text/javascript">
+                                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                                    var disqus_shortname = 'timondiario'; // required: replace example with your forum shortname
+
+                                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                                    (function() {
+                                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                    })();
+                                </script>
+                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+                        </div>
+                    </div>
+
+                    <div class="painel-comentarios">
+                        <div class="topo-comentario">
+                            <span class="relacionadas-{{ noticia.subcategoria.categoria.slugcategoria }}">NOTÍCIAS RELACIONADAS</span>
+                        </div>
+
+                        <div class="wapper-categoria">
+                            <div class="rel-itens">
+                                {% for relacionada in relacionada|slice:"0:4" %}
+                                    <div class="r-item-{{ noticia.subcategoria.categoria.slugcategoria }}">
+                                        <div class="limite-img">
+                                            <a href="{{ relacionada.get_absolute_url }}">
+                                                <img src="{{ relacionada.imagemDestaque.url_383x155 }}">
+                                            </a>
+                                        </div>
+                                        <a href="{{ relacionada.get_absolute_url }}">
+                                            <h1>{{ relacionada.titulo }}</h1>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-left">
+
+                            </div>
+
+                            <div class="coluna-right">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="coluna-right">
+                <div class="sidebar">
+                    <div class="publicidade-home">
+                        {% for publicidade in publicidade %}
+                            {% if publicidade.tipo == "1" %}
+                                <img src="{{ MEDIA_URL }}{{ publicidade.arquivo }}" width="300">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="principal">
+            <div class="wapper-categoria">
+                            <div class="topo-comentario-interna">
+                                <span class="relacionadas-noticias">NOTÍCIAS</span>
+                                <a href="/politica">
+                                    <span class="btn-mais-noticias">VER MAIS</span>
+                                </a>
+
+                                <div class="tags">
+                                    <span class="ass">ASSUNTOS:</span>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#SocorroWaquin</span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#AlexandreAlmeida</span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="assunto-noticias">#ChicoLeitoa</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="coluna-left-interna">
+                                <div class="sub-noticia-full-interna">
+                                    {% for noticia in noticias|slice:"0:1" %}
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <a href="{{ noticia.get_absolute_url }}">
+                                                    <div class="limite-img-full">
+                                                        <img src="{{ noticia.imagemDestaque.url_383x155 }}">
+                                                    </div>
+                                                </a>
+                                                <a href="{{ noticia.get_absolute_url }}">
+                                                    <h1 class="bloco-sub-noticia-noticias-titulo">{{ noticia.titulo }}</h1>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                {% for noticia in noticias|slice:"5:6" %}
+                                    <div class="sub-noticia-full-sub">
+
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <span class="chamada-politica">{{ noticia.subcategoria.categoria.nome }}</span>
+                                                <a href="{{ noticia.get_absolute_url }}">
+                                                    <h1>{{ noticia.titulo }}</h1>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-center-interna">
+                                {% for noti in noticias|slice:"1:4" %}
+                                    <div class="sub-noticia-full-sub-interna">
+
+                                        <div class="bloco-sub-wapper-full">
+                                            <div class="bloco-sub-noticia-noticias">
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <div class="limite-img-full-sub">
+                                                        <img src="{{ noti.imagemDestaque.url_383x155 }}">
+                                                    </div>
+                                                </a>
+                                                <span class="chamada-{{ noti.subcategoria.categoria.slugcategoria }}">{{ noti.subcategoria.categoria.nome }}</span>
+                                                <a href="{{ noti.get_absolute_url }}">
+                                                    <h1>{{ noti.titulo }}</h1>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="coluna-right">
+                                <div class="publicidade-right-interna">
+                                    {% for publicidade in publicidade %}
+                                        {% if publicidade.tipo == "1" %}
+                                            <img src="{{ MEDIA_URL }}{{ publicidade.arquivo }}" width="300">
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+        </div>
+    </div>
+{% include "footer/footer.html" %}

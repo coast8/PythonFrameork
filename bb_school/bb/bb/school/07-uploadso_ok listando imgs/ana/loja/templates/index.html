@@ -1,0 +1,38 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h4>Olá seja Bem-vindo</h4>
+	<br>
+
+
+<hr>
+
+<!--- fazendo   a listagem de dados -->
+
+{% for courses in courses %}
+	{% if courses.image %}
+
+<hr>
+		<img src="{{ courses.image.url }}" alt=""><br>
+	{% else %}
+		<h1> nao tem fotos </h1>
+	{% endif %}
+	<h5>
+			{{courses.description}}
+	</h5>
+<hr>
+<br>
+{% endfor %}
+
+
+
+</body>
+</html>

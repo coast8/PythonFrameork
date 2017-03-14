@@ -1,0 +1,99 @@
+{% for data in datas %}
+    {{ data.data }}<br>
+    {% for atividade in data.programacao_set.all %}
+        {{ atividade.programa }} - {{ atividade.data_dia.data|date:'d' }}<br>
+    {% endfor %}<br>
+{% endfor %}
+			<!--===============================-->
+			<!--== Schedule ===================-->
+			<!--===============================-->
+			<section id="schedule" class="wow bounceInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="section-header text-left">
+							<h2>The <b>schedule</b></h2>
+							<p>Awesome section description goes here.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="content-tabs">
+							<ul class="nav nav-tabs">
+                                {% for data in datas|slice:"0:1" %}
+								    <li class="active"><a href="#tab{{ data.data|date:'d' }}" data-toggle="tab">Dia {{ data.data|date:'d' }}</a></li>
+                                {% endfor %}
+                                {% for data in datas|slice:"1:n" %}
+								    <li><a href="#tab{{ data.data|date:'d' }}" data-toggle="tab">Dia {{ data.data|date:'d' }}</a></li>
+                                {% endfor %}
+							</ul>
+
+							<div class="tab-content">
+                                {% for data in datas|slice:"0:1" %}
+								<div class="tab-pane fade in active" id="tab1">
+									<ul class="accordion">
+                                        {% for atividade in data.programacao_set.all %}
+										<li>
+											<a class="accordion-heading">
+												<span class="schedule-time accent">
+													9<sup>30</sup>
+												</span>
+												<div class="schedule-speaker">
+													<img src="images/demo/speakers/speaker-03.jpg" alt="Speaker">
+												</div>
+												<h4 class="accordion-title">{{ atividade.programa }}</h4>
+											</a>
+											<div class="accordion-body">
+												<p>
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius numquam ex adipisci veniam cum temporibus quia aut, impedit amet! Libero modi quia numquam tempore beatae dolore, deserunt eaque ducimus sapiente.
+												</p>
+												<div class="schedule-speaker-list">
+													<b>Speakers:</b>
+													<div class="schedule-speaker">
+														<img src="images/demo/speakers/speaker-03.jpg" alt="Speaker">
+														<h4>Nick Doe</h4>
+													</div>
+												</div>
+											</div>
+										</li>
+                                        {% endfor %}
+									</ul>
+								</div>
+                                {% endfor %}
+                                {% for data in datas|slice:"1:n" %}
+								<div class="tab-pane fade" id="tab2">
+									<ul class="accordion">
+                                        {% for atividade in data.programacao_set.all %}
+										<li>
+											<a class="accordion-heading">
+												<span class="schedule-time accent">
+													9<sup>30</sup>
+												</span>
+												<div class="schedule-speaker">
+													<img src="images/demo/speakers/speaker-02.jpg" alt="Speaker">
+												</div>
+												<h4 class="accordion-title">{{ atividade.programa }}</h4>
+											</a>
+											<div class="accordion-body">
+												<p>
+													Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius numquam ex adipisci veniam cum temporibus quia aut, impedit amet! Libero modi quia numquam tempore beatae dolore, deserunt eaque ducimus sapiente.
+												</p>
+												<div class="schedule-speaker-list">
+													<b>Speakers:</b>
+													<div class="schedule-speaker">
+														<img src="images/demo/speakers/speaker-02.jpg" alt="Speaker">
+														<h4>Vicky Doe</h4>
+													</div>
+												</div>
+											</div>
+										</li>
+                                        {% endfor %}
+									</ul>
+								</div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--==========-->

@@ -1,0 +1,5 @@
+{% for publi in publicidade %}
+    {% if publi.tipo == '7' %}
+        {{ publi.adsense|safe }}
+    {% endif %}
+{% endfor %}

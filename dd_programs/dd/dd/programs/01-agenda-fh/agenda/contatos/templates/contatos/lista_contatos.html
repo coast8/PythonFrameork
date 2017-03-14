@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Lista de contatos cadastrados
+{% endblock titulo %}
+
+{% block corpo %}
+<h1>Contatos</h1>
+<table>
+	<caption>Meus contatos</caption>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Email</th>
+			<th>Sexo</th>
+			<th>Cidade</th>
+			<th colspan="2">Açoes</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for c in contatos %}
+		<tr>
+			<td>{{ c.id }}</td>
+			<td>{{ c.nome }}</td>
+			<td>{{ c.telefone }}</td>
+			<td>{{ c.email }}</td>
+			<td>{{ c.sexo }}</td>
+			<td>{{ c.cidade }}</td>
+			<td><a href="{% url 'contato:editarcontato' c.id %}">Editar</a></td>
+			<td><a href="{% url 'contato:apagarcontato' c.id %}">Apagar</a></td>
+		</tr>
+	{% endfor %}
+	</tbody>
+{% endblock corpo %}

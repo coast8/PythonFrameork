@@ -1,0 +1,11 @@
+*.pyc
+*Thumbs.db
+.idea/*
+media/*
+filer_public/*
+*/migrations/*
+tiago/local_settings.py
+access.log
+error.log
+django/*
+db.sqlite3

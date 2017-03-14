@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Editar um contato
+{% endblock titulo %}
+
+{% block corpo %}
+	<h1>Editar contato</h1>
+		<form action="" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		{{ form_contato.as_p }}
+		<input type="submit" name="" value="Salvar contato">
+	</form>
+{% endblock corpo %}

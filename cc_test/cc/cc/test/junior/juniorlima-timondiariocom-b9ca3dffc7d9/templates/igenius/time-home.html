@@ -1,0 +1,246 @@
+{% load pagination_tags %}
+{% include "header/h-home.html" %}
+<body class="pinterna">
+    {% include "header/header-interna.html" %}
+    <div class="row">
+        <div class="principal">
+
+            <div class="c-left">
+                <div class="bloco-categoria-esportes-{{ team.cor.slugcor }}">
+                    <div class="">
+                            <div class="wapper-categoria-interna">
+                                <div class="nome-categoria">
+                                    <span class="escudo-interna">
+                                        <img src="{{ team.escudo.url_73x73 }}">
+                                    </span>
+
+                                    <h1>{{ team.nome }}</h1>
+
+                                </div>
+                                {% for publicidade in publicidade %}
+                                    {% if publicidade.tipo == '2' %}
+                                        <div class="publicidade-categoria">
+                                            <a href="{{ publicidade.url }}" target="_blank">
+                                                <img src="{{ MEDIA_URL }}{{ publicidade.arquivo }}">
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <div class="buscar-categoria">
+                                    <span class="i-buscar"></span>
+                                    <form method="get" action="busca">
+                                        <input type="text" name="buscap" placeholder="Buscar">
+                                    </form>
+                                </div>
+
+                                <div class="menu-categoria">
+                                    <a href="{{ team.site }}" target="_blank">
+                                            <a href="#">
+                                                <div class="m-categoria">
+                                                    HOME {{ team.nome }}
+                                                </div>
+                                            </a>
+                                            <div class="m-categoria">
+                                                SITE
+                                            </div>
+                                            <div class="m-categoria">
+                                                HISTÓRIA
+                                            </div>
+                                            <a href="/esportes/futebol/times/{{ slugtime }}/noticias">
+                                                <div class="m-categoria">
+                                                    MAIS NOTÍCIAS
+                                                </div>
+                                            </a>
+                                            <div class="m-categoria">
+                                                TÍTULOS
+                                            </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+{% autopaginate noticias 10 %}
+                <div class="coluna-left">
+                    <div class="manchete-{{ team.cor.slugcor }}">
+                        {% for manchete in noticias|slice:"0:1" %}
+                            <a href="{{ manchete.get_absolute_url }}">
+                                <h1>{{ manchete.titulo|truncatewords:15 }}</h1>
+                            </a>
+                            <p>{{ manchete.subtitulo|truncatewords:22 }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="barra-manchete barra-manchete-{{ team.cor.slugcor }}">
+                        {% for manchete in noticias|slice:"1:2" %}
+                            <a href="{{ manchete.get_absolute_url }}">
+                                <p>
+                                    {{ manchete.titulo|truncatewords:10 }}
+                                </p>
+                            </a>
+                        {% endfor %}
+                    </div>
+
+
+
+                <div class="sub-noticia-full-sub" STYLE="margin-top: 10px;">
+                    {% for noticia in noticias|slice:"2:3" %}
+                        <div class="bloco-sub-wapper-full" style="border-bottom: none;">
+                            <div class="bloco-sub-noticia-esportes-{{ team.cor.slugcor }}">
+                                <a href="{{ noticia.get_absolute_url }}">
+                                    <div class="limite-img-full-sub">
+                                        <img src="{{ noticia.imagemDestaque.url_383x155 }}">
+                                    </div>
+                                </a>
+                                <span class="chamada-noticias">{{ noticia.subcategoria.nome }}</span>
+                                <a href="{{ noticia.get_absolute_url }}">
+                                    <h1>{{ noticia.titulo }}</h1>
+                                </a>
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!--
+                <div class="sub-noticia-full-sub">
+                    {% for noticia in noticias|slice:"1:2" %}
+                        <div class="bloco-sub-wapper-full" style="border-bottom: none !important;">
+                            <div class="bloco-sub-noticia-esportes-{{ team.cor.slugcor }}">
+                                <span class="chamada-{{ noticia.subcategoria.categoria.slugcategoria }}">{{ noticia.subcategoria.nome }}</span>
+
+                                <a href="{{ noticia.get_absolute_url }}">
+                                    <h1>{{ noticia.titulo }}</h1>
+                                </a>
+
+                                <p>{{ noticia.subtitulo|truncatewords:22 }}</p>
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                -->
+
+            </div>
+
+                <div class="coluna-center">
+                <div class="slider">
+                    {% for programa in noticias|slice:"3:6" %}
+                        <div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="{{ programa.get_absolute_url }}">
+                                        {{ programa.titulo }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <a href="{{ programa.get_absolute_url }}">
+                                <img src="{{ programa.imagemDestaque.url_800x600 }}" alt="{{ programa.subtitulo }}" width="400" height="335" title="{{ programa.subtitulo }}"/>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+
+                <div class="row-interna">
+                    <div class="">
+                    <div class="topo-politica">
+                    <span class="categoria-{{ team.cor.slugcor }}">NOTÍCIAS DO {{ team.nome }}</span>
+
+            </div>
+
+            <div class="wapper-categoria">
+                <div class="coluna-left-sub-categoria">
+                    <div class="sub-noticia-full" style="margin-top: -5px !important;">
+                        {% for noticia in noticias|slice:"6:" %}
+                            <div class="bloco-sub-wapper-full" style="padding-bottom: 15px;margin-bottom: 10px;">
+                                <div class="bloco-sub-noticia-esportes-{{ team.cor.slugcor }}">
+                                    <a href="{{ noticia.get_absolute_url }}">
+                                        <div class="limite-img-full-sub-categoria">
+                                            <img src="{{ noticia.imagemDestaque.url_383x155 }}">
+                                        </div>
+                                    </a>
+                                    <a href="{{ noticia.get_absolute_url }}">
+                                        <h1 class="bloco-sub-noticia-politica-titulo-manchete-sub-{{ noticia.subcategoria.categoria.slugcategoria }}-sub-{{ team.cor.slugcor }}">{{ noticia.titulo }}</h1>
+                                    </a>
+                                    <p>{{ noticia.subtitulo|truncatewords:25 }}</p>
+                                    <div class="barra-manchete-sub-categoria barra-manchete-{{ slugcategoria }}">
+                                         <span class="data-publicacao">
+                                             {{ noticia.datapublicacao }}
+                                         </span>
+                                         <a href="{{ noticia.get_absolute_url }}">
+                                             <span class="btn-leia">
+                                                 LEIA MAIS
+                                             </span>
+                                         </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+                    <div id="paginac">
+                            {% paginate %}
+                    </div>
+        </div>
+                </div>
+            </div>
+
+
+            <div class="coluna-right">
+                <div class="">
+                    <div class="publicidade-home">
+                        <div class="publicidade-interna">
+                                {% include "adsense/publicidade-bloco-desktop.html" %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="times-interna">
+                        <div class="times-header">SELECIONE SEU TIME</div>
+                            <div class="times">
+                                {% for time in teams %}
+                                    <a href="{{ time.get_absolute_url }}">
+                                        <div class="escudo-time">
+                                             <img src="{{ time.escudo.url_73x73 }}" width="35">
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                    </div>
+
+                <div class="mais-lidas-sidebar">
+                                    <div class="plantao-wapper">
+                                        <span class="t-lidas-sidebar">MAIS LIDAS</span>
+                                        {% for plantao in lidas %}
+                                            <div class="item-mais-sidebar">
+                                                <span class="num-mais-lidas-sidebar">
+                                                    {{ forloop.counter }}
+                                                </span>
+                                                <a href="{{ plantao.get_absolute_url }}">
+                                                    <h1 class="titulo-mais-sidebar">
+                                                        {{ plantao.titulo|truncatewords:9 }}
+                                                    </h1>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+    </div>
+{% include "footer/footer.html" %}

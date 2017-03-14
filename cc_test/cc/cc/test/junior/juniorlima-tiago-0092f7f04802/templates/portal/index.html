@@ -1,0 +1,160 @@
+{% extends 'portal/base.html' %}{% load staticfiles %}{% load thumbnail %}
+{% block container %}
+    <section class="mainContent">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-sm-7">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <div class="slider">
+                                        {% for noticia in destaques %}
+                                        <div class="singleSlide">
+                                            <img src="{{ noticia.img|thumbnail_url:'noticia_750_523' }}" alt="{{ noticia.titulo }}">
+                                            <div class="silderCont">
+                                                <h1><a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a></h1>
+                                                <div class="metaCont">
+                                                    <a href="#"> <i class="fa fa-clock-o"></i>{{ noticia.data_publicacao }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% for noticia in noticias|slice:"0:2" %}
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="singleBlog">
+                                        <div class="blogImg">
+                                            <img src="{{ noticia.img|thumbnail_url:'noticia_360_245' }}" alt="{{ noticia.titulo }}">
+                                        </div>
+                                        <div class="blogDec">
+                                            <h2 class="blogtitle">
+                                                <a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a>
+                                            </h2>
+                                            <p>{{ noticia.subtitulo }}</p>
+                                            <div class="blogMeta">
+                                                <a href="{{ noticia.get_absolute_url }}"> <i class="fa fa-clock-o"></i>{{ noticia.data_publicacao }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% for noticia in noticias|slice:"2:3" %}
+                                <div class="col-sm-12">
+                                    <div class="singleBlog">
+                                        <div class="blogImg">
+                                            <img src="{{ noticia.img|thumbnail_url:'noticia_750_523' }}" alt="{{ noticia.titulo }}">
+                                        </div>
+                                        <div class="blogDec">
+                                            <h2 class="blogtitle">
+                                                <a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a>
+                                            </h2>
+                                            <p>{{ noticia.subtitulo }}</p>
+                                            <div class="blogMeta">
+                                                <a href="{{ noticia.get_absolute_url }}"> <i class="fa fa-clock-o"></i>{{ noticia.data_publicacao }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="row">
+                                {% for noticia in noticias|slice:"3:7" %}
+                                <div class="blogHlafWidth">
+                                    <div class="clearfix"></div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <div class="singleBlog hlafWidth">
+                                            <div class="blogImg">
+                                                <img src="{{ noticia.img|thumbnail_url:'noticia_360_245' }}" alt="{{ noticia.titulo }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <div class="blogDec hlafWidthdec">
+                                            <h2 class="blogtitle">
+                                                <a href="{{ noticia.get_absolute_url }}">{{ noticia.titulo }}</a>
+                                            </h2>
+                                            <p>{{ noticia.subtitulo }}</p>
+                                            <div class="blogMeta">
+                                                <a href="{{ noticia.get_absolute_url }}"> <i class="fa fa-clock-o"></i>{{ noticia.data_publicacao }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-5">
+                            {% include 'portal/sidebar.html' %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="paginations">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="paginationIn">
+                                <span class="current">1</span>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <span class="dottedPagi">...</span>
+                                <a href="#">12</a>
+                                <a href="#" class="next"><i class="fa fa-long-arrow-right"></i></a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="instagramPhoto">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/1.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/2.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/3.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/4.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/5.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/6.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/7.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="singleInst">
+                            <a href="#">
+                                <img src="{% static 'site/images/instagram/8.jpg' %}" alt="">
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </section>
+{% endblock %}

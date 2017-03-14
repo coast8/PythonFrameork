@@ -1,0 +1,4 @@
+* Esconder no Admin o campo Estoque Atual
+  Este deve ser modificado somente quando há uma entrada de produtos
+
+* Refazer sistema no Django

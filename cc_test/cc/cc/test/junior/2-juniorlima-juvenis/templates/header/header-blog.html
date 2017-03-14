@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog.nome }} - Blog - Juvenis</title>
+    <meta name="description" content="Blog de {{ blog.nome }}. {{ blog.descricao }}" />
+    <meta name="robots" content="all" />
+    <meta name="revisit-after" content="1 days" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{{ STATIC_URL }}site/css/layout-min.css" rel="stylesheet" type="text/css" />
+    <!-- Facebook -->
+    <meta property="og:title" content="{{ blog.nome }} - Blog - Juvenis">
+    <meta property="og:description" content="Gostei do blog de {{ blog.nome }} no Juvenis e recomendo. Tudo sobre {{ blog.descricao }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://juvenis.com.br{{ blog.get_absolute_url }}" />
+    <meta property="og:site_name" content="Juvenis">
+    <meta property="og:image" content="http://juvenis.com.br{{ blog.imagem_capa.url_800x600 }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
+
+    <!-- Google Plus -->
+    <link href="https://plus.google.com/108260175010004524527" rel="publisher" />
+
+    <meta property="fb:admins" content="545164072246487" />
+    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}site/img/favicon.png" />
+
+
+    <meta name="google-site-verification" content="SKeeRx1QFHiX3sU9v_2OM5r5T9pTJkm9g1VWp0KAuMw" />
+</head>
+<body>
+{% include "header/menu.html" %}

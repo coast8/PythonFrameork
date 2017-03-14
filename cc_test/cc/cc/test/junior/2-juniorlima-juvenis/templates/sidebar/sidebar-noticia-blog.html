@@ -1,0 +1,66 @@
+<div id="containersidebar">
+    {% if noticia.usuario.user_colaborador_set.foto.url_300x225 %}
+    <div id="sidebar">
+        <h1 class="titulobloco1_downloads">Seguir {{ noticia.blog.usuario.first_name }} no Facebook</h1>
+        <div id="foto"><img src="{{ noticia.usuario.user_colaborador_set.foto.url_300x225 }}"></div>
+        <div class="fb-follow" data-href="https://www.facebook.com/{{ noticia.usuario.user_colaborador_set.fb_username }}" data-width="200" data-colorscheme="light" data-layout="box_count" data-show-faces="false"></div>
+    </div>
+    {% endif %}
+    <div id="sidebar">
+        <h1 class="titulobloco1_downloads">Destaques Juvenis</h1>
+        {% for noticia in destaque_home|slice:"0:1" %}
+        <div id="block">
+            <div id="img_block">
+                <img src="{{ noticia.imagem.url_200x150 }}">
+            </div>
+            <p class="chapeu_sidebar"><a href="{{ noticia.categoria_nome.get_absolute_url }}">{{ noticia.categoria_nome.nome }}</a> </p>
+            <a href="{{ noticia.get_absolute_url }}"><h1 class="titulobloco1_sidebar">{{ noticia.titulo }}</h1></a>
+
+        </div>
+        {% endfor %}
+        {% for noticia in destaque_home|slice:"1:5" %}
+        <div id="block">
+            <p class="chapeu_sidebar"><a href="{{ noticia.categoria_nome.get_absolute_url }}">{{ noticia.categoria_nome.nome }}</a> </p>
+            <a href="{{ noticia.get_absolute_url }}"><h1 class="titulobloco1_sidebar">{{ noticia.titulo }}</h1></a>
+        </div>
+        {% endfor %}
+        <a href="#">
+            <div id="bo">MAIS NOTÍCIAS</div>
+        </a>
+    </div>
+
+    <div id="sidebar">
+    {% include "adsense/300x600-misto-interna.html" %}
+    </div>
+
+    <div id="sidebar2">
+        <div class="g-page" data-href="https://plus.google.com/108260175010004524527" data-layout="landscape" data-showtagline="false" data-showcoverphoto="false" data-rel="publisher"></div>
+    </div>
+
+    <div id="sidebar">
+        <h1 class="titulobloco1_downloads">Últimas Juvenis</h1>
+        {% for noticia in ultimas_home|slice:"0:1" %}
+        <div id="block">
+            <div id="img_block">
+                <img src="{{ noticia.imagem.url_200x150 }}">
+            </div>
+            <p class="chapeu_sidebar"><a href="{{ noticia.categoria_nome.get_absolute_url }}">{{ noticia.categoria_nome.nome }}</a> </p>
+            <a href="{{ noticia.get_absolute_url }}"><h1 class="titulobloco1_sidebar">{{ noticia.titulo }}</h1></a>
+        </div>
+        {% endfor %}
+        {% for noticia in ultimas_home|slice:"1:5" %}
+        <div id="block">
+            <p class="chapeu_sidebar"><a href="{{ noticia.categoria_nome.get_absolute_url }}">{{ noticia.categoria_nome.nome }}</a> </p>
+            <a href="{{ noticia.get_absolute_url }}"><h1 class="titulobloco1_sidebar">{{ noticia.titulo }}</h1></a>
+
+        </div>
+        {% endfor %}
+        <a href="#">
+            <div id="bo">MAIS NOTÍCIAS</div>
+        </a>
+    </div>
+
+    <div id="sidebar2">
+        <div class="fb-like-box" data-href="https://www.facebook.com/SiteJuvenis" data-width="300" data-height="210" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+    </div>
+</div>

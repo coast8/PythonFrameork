@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{% load thumbnail %}
+{% block content %}
+<!-- Section Home
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <section id="sHome">
+
+        <div class="bHeader">
+            <div class="container">
+
+                <div class="hContent">
+
+                    <div class="hLogo"><span>Wellington</span></div>
+                    <div class="hMenu menu-button"><span aria-hidden="true" class="icon_menu"></span></div>
+
+                    <div class="row">
+                        <div class="col-md-12 hDesc nopaddingcol wow fadeInUp">
+                            <div class="mGrid">
+                                <img src="{{ object.imagem|thumbnail_url:"imagem_noticia_1170" }}" />
+                            </div>
+                            <h2>{{ object.titulo }}</h2>
+                            <div class="blog-date"><span>Por {{ object.usuario }} em {{ object.data_publicacao }} - {{ object.categoria.nome }}</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            <div class="blog-content row wow fadeInUp">
+                <div class="col-md-12 nopaddingcol">
+                <p>
+                {{ object.conteudo|safe }}
+                </p>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Section Comments
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <section id="sComments">
+
+    <div class="container wow fadeInUp">
+
+
+        <div class="sTitle"><span>Comentários</span></div>
+
+        <div id="disqus_thread"></div>
+
+
+    </div>
+
+    </section>
+
+<!-- Section PostComment
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <section id="sPostComment">
+
+{% endblock %}
+{% block footer_extra %}
+    {% include 'extras/disqus.html' %}
+{% endblock %}

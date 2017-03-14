@@ -1,0 +1,156 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=229259297264129&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% include "header/h-home.html" %}
+{% include "header/header-home-static.html" %}
+<body style="background: rgba(0, 0, 0, 0) url({{ STATIC_URL }}site/img/bg-azul.fw.png) no-repeat scroll 0 0 / 100% 100%;">
+
+
+<div class="menu-responsive">
+    <div class="menu-wrap">
+			<nav class="menu-res">
+				<div class="icon-list">
+                    {% for categoria in categorias %}
+					    <a href="{{ categoria.get_absolute_url }}">
+                            <i class="fa fa-fw fa-newspaper-o"></i>
+                            <span>{{ categoria.nome }}</span>
+                        </a>
+                    {% endfor %}
+				</div>
+			</nav>
+			<button class="close-button" id="close-button">Close Menu</button>
+			<div class="morph-shape" id="morph-shape" data-morph-open="M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z">
+				<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+					<path d="M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z"/>
+				</svg>
+			</div>
+		</div>
+		<button class="menu-button" id="open-button">Open Menu</button>
+		<script src="{{ STATIC_URL }}site/js/classie.js"></script>
+		<script src="{{ STATIC_URL }}site/js/main3.js"></script>
+</div>
+
+{% for extra in extra %}
+    <div class="row">
+            <div class="row-extra">
+               <div class="wapper-extra" style="background: url('{{ extra.imagemDestaque.url_800x600 }}') no-repeat scroll 0 0 / 100% auto;" >
+                   <div class="principal-extra">
+                       <a href="{{ extra.get_absolute_url }}">
+                            <span class="titulo-extra">{{ extra.titulo }}</span>
+                       </a>
+                       <span class="subtitulo-extra">{{ extra.subtitulo }}</span>
+                       <a href="{{ extra.get_absolute_url }}">
+                           <div class="btn-extra">
+                               DETALHES
+                           </div>
+                       </a>
+                   </div>
+
+               </div>
+            </div>
+    </div>
+{% endfor %}
+    <div class="row">
+        <div class="principal">
+            <div class="coluna-static-left">
+                <span class="titulo-static">CONTATO</span>
+                <span class="subtitulo-static">
+                    <ul style="line-height: 18px;">
+                        <li>Entre em contato conosco, encontrou algum erro em alguma de nossas matérias?</li>
+                        <li>Quer ser anunciante ou parceiro TimonDiario.com?</li>
+                        <li>Deseja se tornar um blogueiro?</li>
+                    </ul>
+                    Não se preocupe estamos a sua disposição. :)
+
+                </span>
+
+                <div class="form-contato">
+                    <div class="campos">
+                        <label>Nome</label>
+                        <input type="text" name="nome">
+                    </div>
+                    <div class="campos">
+                        <label>Sobrenome</label>
+                        <input type="text" name="nome">
+                    </div>
+                    <div class="campos">
+                        <label>Email</label>
+                        <input type="text" name="nome" placeholder="seunome@emil.com">
+                    </div>
+                    <div class="mensagem">
+                        <label>Mensagem</label>
+                        <textarea></textarea>
+                    </div>
+                </div>
+
+            </div>
+            {% include "sidebar/sidebar-interna.html" %}
+
+
+        </div>
+
+    </div>
+    <div class="publicidade-movel">
+                    {% include "adsense/publicidade-mobile.html" %}
+                </div>
+
+
+    <div class="row" style="background: rgba(255, 255, 255, 0.4) none repeat scroll 0 0;margin-bottom: 0;padding-bottom: 25px;padding-top: 25px;">
+        <div class="principal">
+            <div class="topo-politica" style="border-top: 1px solid rgba(255, 255, 255, 0.13); !important;">
+                    <span class="categoria-mais" style="color: #fff;border-top: solid 1px #fff;">MAIS VISITADOS</span>
+                    <a href="/noticias">
+                        <span class="btn-mais-noticias" style="color: #fff;border: 1px solid #fff">VER MAIS</span>
+                    </a>
+
+            </div>
+
+            <div class="wapper-categoria" style="width: 104% !important;">
+                {% for categoria in categoria %}
+                    <div class="coluna-left-home-mais">
+                    <div class="header-categoria-{{ categoria.categoria.slugcategoria }}" style="background: rgba(255, 255, 255, 0.13) none repeat scroll 0 0 !important; ">
+                        <a href="{{ categoria.get_absolute_url }}">
+                            <span class="wapper-categoria-mais">
+                                {{ categoria.nome }}
+                            </span>
+
+                            <span class="wapper-categoria-mais" style="float: right !important; font-weight: normal; font-size: 11px; margin-top: 14px; margin-right: 15px;">
+                                VER MAIS
+                            </span>
+                        </a>
+                    </div>
+                    {% for noticia in categoria.noticia_set.all|slice:"0:3" %}
+                        <div class="sub-noticia-full-sub-mais">
+                            <div class="bloco-sub-wapper-full">
+                                <div class="bloco-sub-noticia-{{ noticia.subcategoria.categoria.slugcategoria }}">
+                                    <a href="{{ noticia.get_absolute_url }}">
+                                        <div class="limite-img-full-sub-mais">
+                                            <span class="count-mais-{{ noticia.subcategoria.categoria.slugcategoria }}">{{ forloop.counter }}</span>
+                                            <img src="{{ noticia.imagemDestaque.url_383x155 }}">
+                                        </div>
+                                    </a>
+                                    <span class="chamada-{{ noticia.subcategoria.categoria.slugcategoria }}">{{ noticia.subcategoria.nome }}</span>
+                                    <a href="{{ noticia.get_absolute_url }}">
+                                        <h1 style="color: #fff !important;">{{ noticia.titulo|truncatewords:9 }}</h1>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<div class="publicidade-movel">
+                    {% include "adsense/publicidade-mobile.html" %}
+                </div>
+{% include "footer/footer.html" %}

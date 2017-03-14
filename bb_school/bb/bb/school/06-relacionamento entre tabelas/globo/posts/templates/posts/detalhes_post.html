@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    {{ post.titulo }} - {{ block.super }}
+{% endblock titulo %}
+
+{% block posts %}
+
+<div class="blog-post">
+    <h2 class="blog-post-title">{{ post.titulo }}</h2>
+    <p class="blog-post-meta">{{ post.data_post }} | Postado por: {{ post.usuario.get_full_name }}</p>
+
+    <p>{{ post.descricao_curta }}</p>
+    <hr>
+    {% if post.imagem %}
+        <img src="{{ post.imagem.url }}">
+    {% endif %}
+    <p>
+        {{ post.materia }}
+    </p>
+</div><!-- /.blog-post -->
+
+{% endblock posts %}

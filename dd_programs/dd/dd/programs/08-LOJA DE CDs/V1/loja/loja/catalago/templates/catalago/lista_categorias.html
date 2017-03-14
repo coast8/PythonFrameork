@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Contato | {{ block.super }}
+{% endblock %}
+
+{% block container %}
+
+<div class="page-header">
+    <h3>Escolha uma Categoria</h3>
+
+    <ul class="">
+
+      
+      {% for category in categories %}
+        <li><a href="{% url 'catalago:categoria' slug=category.slug %}">{{ category }}</a></li>
+        {% endfor %}
+
+  
+     </ul>
+
+
+</div>
+{% endblock %}

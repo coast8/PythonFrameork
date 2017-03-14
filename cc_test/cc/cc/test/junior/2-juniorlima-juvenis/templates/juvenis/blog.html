@@ -1,0 +1,49 @@
+{% include "header/header-blog.html" %}
+    <div id="secao1_top">
+            <div id="foto_blog">
+                <img src="{{ blog.imagem_capa.url_800x600 }}" height="265"/>
+            </div>
+            <h1 class="tituloDono">{{ blog.nome }}</h1>
+            <div id="detalhes">
+                {% for user in dono %}
+                <h1 class="tituloSecao1Blog">@{{ user.nome_usuario }}</h1>
+                {% endfor %}
+                <p class="subhomeBlogIn">Igreja: {{ blog.igreja }}</p>
+                <p class="subhomeBlogIn">Email: {{ blog.email }}</p>
+                <p class="subhomeBlogInDesc">Descrição: {{ blog.descricao }}</p>
+                <div id="midias_blog">
+                        <div id="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ blog.get_absolute_url }}" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false"></div></div>
+                    </div>
+            </div>
+        </div>
+    <div id="corpo2">
+        <div id="containerInternaBlog">
+            <div id="conteudoInterna">
+                <div id="barratopBlog ">
+
+                </div>
+
+                {% for noticia in noticias %}
+                    <div id="listaBlogs">
+                    {% if noticia.imagem %}
+                        <div id="imagemBlog">
+                        <a href="{{ noticia.get_absolute_url }}">
+                            <img src="{{ noticia.imagem.url_200x150 }}" width="180" height="123">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <a href="{{ noticia.get_absolute_url }}">
+                        <h1 class="tituloSecao3BlogIn">{{ noticia.titulo }}</h1>
+                        <p class="subhomeBlogIn">{{ noticia.subtitulo }}</p>
+                    </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="shadowInterna"></div>
+        </div>
+        <div id="containersidebar">
+            {% include "sidebar/sidebar-noticia.html" %}
+        </div>
+{% include "footer/footer.html" %}

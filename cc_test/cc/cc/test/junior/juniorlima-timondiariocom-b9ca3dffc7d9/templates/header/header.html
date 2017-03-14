@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timon Diário - Notícias, Entretenimento, Timon</title>
+
+    <link href="{{ STATIC_URL }}site/css/layout.css" rel="stylesheet" type="text/css" media="screen">
+
+    <script type="text/javascript" src="{{ STATIC_URL }}site/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}site/js/slider/jquery.slider.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!--
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>-->
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".slider").slideshow({
+                width      : 400,
+                height     : 363,
+                transition : 'fade'
+            });
+            $(".caption").fadeIn(0);
+
+            // playing with events:
+
+            $(".slider").bind("sliderChange", function(event, curSlide) {
+                $(curSlide).children(".caption").fadeIn(0);
+            });
+
+            $(".slider").bind("sliderTransitionFinishes", function(event, curSlide) {
+                $(curSlide).children(".caption").fadeIn(0);
+            });
+        });
+    </script>
+
+</head>

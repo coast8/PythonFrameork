@@ -1,0 +1,119 @@
+{% extends 'site/base.html' %}
+{% block header %}{% endblock %}
+{% block container %}
+<div class="containermeio">
+    <div class="corpo3">
+        <div class="containerInterna">
+            <div class="conteudoInterna">
+
+                <div class="breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title" title="Letras de música gospel">juvenis.com.br</span></a> ›</span>
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ noticia.categoria_nome.get_absolute_url }}" itemprop="url" title="Veja mais sobre {{ noticia.categoria_nome.nome }} evangélicas"><span itemprop="title">{{ noticia.categoria_nome.nome|lower }}</span></a> ›</span>
+                    <span>{{ noticia.titulo }}</span>
+                </div>
+
+                <h1 class="tituloInterna">{{ noticia.titulo }}</h1>
+                <p class="subtitulo">{{ noticia.subtitulo }}</p>
+
+                <div class="barratop">
+                    <div class="nomimg">
+                        <p class="autor"><a rel="me" href="{{ noticia.usuario.user_colaborador_set.plus }}">
+                            <p class="aut2">{{ noticia.usuario }}</a> em {{ noticia.criado_em|date:"d-F-Y" }}</p>
+                    </div>
+
+                    <div class="midias">
+                        <div class="f1"><div class="fb-like" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div></div>
+                        <div class="f1"><g:plusone></g:plusone></div>
+                        <div class="tw"><a href="http://juvenis.com.br{{ noticia.get_absolute_url }}" class="twitter-share-button" data-url="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-via="JuvenisThe" data-lang="pt">Tweet</a></div>
+                    </div>
+                </div>
+
+                <div class="texto">
+                    {% if noticia.imagem %}
+                    <div class="gallery">
+                        <div class="imgdestaque">
+                           <div class="imgd">
+                               <img src="{{ noticia.imagem.url_800x600 }}" alt="{{ noticia.titulo }}">
+                           </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="limite_texto">
+                        <div class="publicidade_interna_rtg_grd">
+                            {% include "adsense/336x280-misto-noticia.html" %}
+                        </div>
+                        {{ noticia.conteudo|safe }}
+                        {% if noticia.fonte %}<p>Fonte: {{ noticia.fonte }}</p>{% endif %}
+                        {% if noticia.video_noticia_set.all %}
+                        <div class="videoInterna">
+                            <h1 class="tituloSecao1Video2">Video</h1>
+                            <div class="borda8_2"><span class="rodape_interna"></span></div>
+                            {% for video in noticia.video_noticia_set.all %}
+                            <div class="embe2">
+                                <iframe width="618" height="345" src="http://www.youtube.com/embed/{{ video.url }}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            {% endfor %}
+                            <p class="subtituloVideo">{{ video.descricao }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="comentario">
+                    <h1 class="tituloSecao1Video2">Comente</h1>
+                    <div class="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <div class="comFacebook">
+                        <div class="fb-comments" data-href="http://juvenis.com.br{{ noticia.get_absolute_url }}" data-num-posts="5" data-width="630"></div>
+                    </div>
+                </div>
+
+                <div class="publicidade_interna_sub">
+                {% include "adsense/480x60-texto.html" %}
+                </div>
+
+                <div class="relacionadas">
+                    <h1 class="tituloSecao1_relacionadas">Relacionadas</h1>
+                    <div class="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <!-- Código postagens relacionadas -->
+                    {% for noticia in relacionados|slice:"0:5" %}
+                        <div class="itemRelacionada">
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <img src="{{ noticia.imagem.url_200x150 }}" width="200" alt="{{ noticia.titulo }}">
+                            </a>
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <h1 class="titulobloco1">{{ noticia.titulo }}</h1>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+
+                <div class="relacionadas">
+                    <h1 class="tituloSecao1_relacionadas">Mais {{ noticia.categoria_nome.nome }}</h1>
+                    <div class="borda8_2"><span class="rodape_interna_subinterna"></span></div>
+                    <!-- Código das postagens relacionadas -->
+                    {% for noticia in relacionados|slice:"5:10" %}
+                        <div class="itemRelacionada">
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <img src="{{ noticia.imagem.url_200x150 }}" width="200" alt="{{ noticia.titulo }}">
+                            </a>
+                            <a href="{{ noticia.get_absolute_url }}">
+                                <h1 class="titulobloco1">{{ noticia.titulo }}</h1>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+        {% include "site/sidebar.html" %}
+</div>
+{% endblock %}
+{% block scripts %}
+{% include 'site/scripts/facebook.html' %}
+{% include 'site/scripts/plus.html' %}
+{% include 'site/scripts/twitter.html' %}
+{% endblock %}

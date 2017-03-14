@@ -1,0 +1,128 @@
+{% load staticfiles %}  
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- > meta tegs, funções para o google localizar usando palavras chaves<-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="all" />
+<meta name="keywords" content="Brasil, agricultura, produtos
+rurais, veterinários, rural, agropecuário, pecuária, produtos veterinários online,
+ecommerce rural, loja agropecuária." />
+
+<meta name="description" content="Brasil Agricultura, “aqui você encontra tudo para o
+homem do campo: produtos rurais, veterinários, agropecuários e muito mais”." />
+
+<link href="{% static "imgs/favicon.png" %}" rel="shortcut icon" "image/png"/>
+
+
+<title> Brasil Agricultura – Produtos para o homem do campo</title>
+
+<link rel="stylesheet" type="text/css" href="{% static "cssbanner/style.css" %}">
+<link href= "{% static "CSS/estilos.css" %}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{% static "jsbanner/jquery-1.11.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "jsbanner/scripts.js" %}"></script>
+<script src="{% static "Scripts/swfobject_modified.js" %}" type="text/javascript"></script>
+<style type="text/css">
+
+
+
+<style type="text/css">
+a:link {
+  color: #000;
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+a:active {
+  text-decoration: none;
+  color: #000;
+}
+</style>
+</head>
+
+
+
+
+<body>
+<div id="container" class="container">
+
+<div id="logotipo" class="logotipo"><img src="{% static "imgs/logotipo.png" %}" width="220" height="160" alt="Brasil Agricultura" /></div>
+<div id="menu" class="menu">
+<p class="BarraMenu">
+
+
+
+<a href="{% url 'core:index' %}"> Home </a>
+<a href="{% url 'core:quemsomos' %}"> Quem Somos </a>
+<a href="{% url 'core:produtos' %}"> Produtos </a>
+<a href="{% url 'core:contatos' %}"> Contato </a>
+<a href="{% url 'core:clientes' %}"> Clientes </a>
+<a href="{% url 'core:extras' %}"> Extras </a>
+</p>
+
+</div>
+<!--     AQUI ESTAMOS TRABALHANDO COM O BANNER      -->
+<div id="imagem" class="imagem">
+    <div id="bannerOut">
+          <span></span>
+          <div id="bannerMaster">   
+            <img src="{% static "imagensbanner/b1.png" %}" alt="Venha conheçer nossa empressa." class="visivel"  />
+            <img src="{% static "imagensbanner/b2.png" %}" alt="Seja Livre!" class="escondido"  />
+          </div>  
+    </div>
+</div>
+
+
+<div id="principal" class="principal">
+  <p><img src="{% static "imgs/titulo_principal.png" %}" width="625" height="64" /></p>
+  <p><img src="{% static "imgs/milho.png" %}" width="132" height="131" class="imgs" /><span class="texto">O milho (Zea mays), também chamado abati, auati e avati, é um conhecido cereal,<br />
+    cultivado em grande parte do mundo. O milho é extensivamente utilizado como<br />
+    alimento humano ou ração animal, devido às suas qualidades nutricionais. Todas as<br />
+    evidências científicas levam a crer que seja uma planta de origem americana, já que aí
+    era cultivada desde o período pré-colombiano.</span></p>
+  <p><a href="{% static "leiamais.html" %}" target="_self"><img src="{% static "imgs/leia_mais.png" %}" width="67" height="33" /></a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/laranja.png" %}" width="132" height="131" class="imgs" /><span class="texto">A laranja é o fruto produzido pela laranjeira (Citrus x sinensis), uma árvore da<br />
+    família Rutaceae. A laranja é um fruto híbrido, criado na antiguidade a partir do<br />
+    cruzamento do pomelo com a tangerina. O sabor da laranja varia do doce ao levemente ácido. Frequentemente, esta fruta é descascada e comida ao natural, ou espremida para
+    obter sumo.</span></p>
+  <p><a href="{% static "leia_mais.html" %}" target="_self"><img src="{% static "imgs/leia_mais.png" %}" width="67" height="33" /></a></p>
+  <p>&nbsp;</p>
+  <p><br />
+  </p>
+  <p class="imgs">&nbsp;</p>
+  <p class="imgs">&nbsp;</p>
+  <p class="imgs">&nbsp;</p>
+</div>
+<div id="noticias" class="noticias">
+  <p><img src="{% static "imgs/titulo_noticias.png" %}" width="335" height="64" alt="Noticias" /></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_29_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% url 'core:pg404' %}"  target="_self">Pesquisa com café contribui para a sustentabilidade da produção.</a></span></p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_28_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% url 'core:pg404' %}" target="_self">Evento no Rio Grande do Norte certifica organismos de controle social.</a></span></p>
+  <p>&nbsp;</p>
+  <p><img src="{% static "imgs/dia_27_mar.png" %}" width="60" height="61" class="imgs" /><span class="texto"><a href="{% url 'core:pg404' %}" target="_self">Estudo reforça cultivo de café de base ecologica.</a></span></p>
+</div>
+<div id="rodape" class="rodape"><img src="{% static "imgs/rodape.png" %}" alt="" width="960" height="110" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="35,32,96,92" href="http://www.twitter.com.br" target="_blank" alt="Linkin do Twitter" />
+    <area shape="rect" coords="108,34,169,94" href="http://www.facebook.com.br" target="_blank" alt="Linkin do Facebook" />
+  </map>
+</div>
+
+</div>
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+</script>
+</body>
+</html>
+

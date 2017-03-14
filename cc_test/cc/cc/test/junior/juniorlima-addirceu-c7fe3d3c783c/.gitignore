@@ -1,0 +1,10 @@
+*.pyc
+*Thumbs.db
+.idea/*
+media/*
+*/migrations/*
+addirceu/local_settings.py
+access.log
+error.log
+django/*
+db.sqlite3

@@ -1,0 +1,50 @@
+{% extends 'site/base.html' %}
+{% load staticfiles %}
+{% block title %}<title>Agenda - Institucional 10</title>{% endblock %}
+{% block description %} <meta name="description" content="TV Antena 10 - Afiliada a Rede Record">{% endblock %}
+{% block container %}
+    <div class="container banner">
+	<img src="{% static 'site/images/banner.jpg' %}" class="img-responsive">
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9 col-md-8 col-sm-6 col-xs-6 perfil">
+
+		<div class="page-header">
+			<h2>Agenda</h2>
+		</div>
+            {% for noticia in agenda_list %}
+			<div class="page-header">
+				<h4>{{ noticia.postagem.titulo }} - <small>{{ noticia.data_evento|date:'d/m/Y' }}</small></h4>
+				<p>{{ noticia.postagem.subtitulo }}</p>
+			</div>
+            {% endfor %}
+			<nav>
+				  <ul class="pagination">
+				    <li>
+				      <a href="#" aria-label="Previous">
+				        <span aria-hidden="true">Anterior</span>
+				      </a>
+				    </li>
+				    <li class="active"><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li>
+				      <a href="#" aria-label="Next">
+				        <span aria-hidden="true">Próximo</span>
+				      </a>
+				    </li>
+				  </ul>
+				</nav>
+
+		</div>
+
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+			{% include 'site/sidebar.html' %}
+		</div>
+	</div>
+</div>
+{% endblock %}
