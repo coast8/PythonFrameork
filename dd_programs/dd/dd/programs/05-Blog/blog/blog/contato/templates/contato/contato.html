@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Contato - {{ block.super }}
+{% endblock titulo %}
+
+{% block posts %}
+{% for c in contato %}
+	<h2>{{ c.titulo_pagina }}</h2>
+	<p>
+		{{ c.informacoes|safe }}
+	</p>
+{% endfor %}
+{% endblock posts %}

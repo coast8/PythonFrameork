@@ -10,9 +10,3 @@ def get_subtotal(self):
 
 
 =================================================================================
-
-
-
-
-pesquisa
-Serviços, JSON, XML, REST, SOAP e desenvolvimento assíncrono no ...

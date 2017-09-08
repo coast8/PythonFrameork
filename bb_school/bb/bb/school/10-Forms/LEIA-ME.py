@@ -1,3 +1,7 @@
+
+
+
+
 SEGUEM ALGUMAS DICAS COM FORMULARIOS
 ALGUMAS TAGs DEIXAM O HTML DESOGANIZADO
 
@@ -7,4 +11,8 @@ E VIEWS.PY
 
 
 
+
+
+## tipos de libs para a renderização do form
+pip install django-widget-tweaks
 
