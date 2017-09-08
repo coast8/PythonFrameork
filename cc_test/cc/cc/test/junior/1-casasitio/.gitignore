@@ -1,7 +1,0 @@
-*.pyc
-*Thumbs.db
-.idea/*
-media/*
-*local_settings.py
-django/*
-*/migrations/*

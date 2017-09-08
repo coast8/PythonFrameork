@@ -1,9 +1,0 @@
-*.pyc
-*Thumbs.db
-.idea/*
-media/*
-*/migrations/*
-drpessoa/local_settings.py
-access.log
-error.log
-django/*

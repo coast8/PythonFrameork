@@ -1,4 +1,0 @@
-"""
-arquivo testado e funcionado
-
-"""

@@ -1,5 +1,0 @@
-# Prerequisites yawd-admin
-pip install django==1.5.5
-pip install sorl-thumbnail
-pip install oauth2client
-pip install httplib2

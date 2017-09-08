@@ -1,7 +1,0 @@
-*.pyc
-*Thumbs.db
-.idea/*
-media/*
-*/migrations/*
-local_settings.py
-db.sqlite3
